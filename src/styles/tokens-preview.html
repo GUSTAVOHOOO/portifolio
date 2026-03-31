@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GMStudio Design Tokens — Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./tokens.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      line-height: var(--leading-normal);
+      padding: var(--space-8);
+    }
+
+    h1, h2, h3 {
+      font-family: var(--font-heading);
+    }
+
+    .section {
+      margin-bottom: var(--space-12);
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: var(--text-xs);
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-4);
+      padding-bottom: var(--space-2);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    /* Color Swatches */
+    .swatches {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-4);
+    }
+
+    .swatch {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .swatch-block {
+      width: 80px;
+      height: 56px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--color-border);
+    }
+
+    .swatch-label {
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      text-align: center;
+      max-width: 90px;
+      word-break: break-all;
+    }
+
+    /* Typography specimens */
+    .type-specimen {
+      margin-bottom: var(--space-4);
+    }
+
+    .type-label {
+      font-size: var(--text-xs);
+      color: var(--color-text-subtle);
+      margin-bottom: var(--space-1);
+    }
+
+    /* Glass card */
+    .glass-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border-radius: var(--radius-xl);
+      padding: var(--space-8);
+      max-width: 480px;
+    }
+
+    .glass-card-title {
+      font-family: var(--font-heading);
+      font-size: var(--text-xl);
+      font-weight: var(--font-weight-semibold);
+      margin-bottom: var(--space-3);
+    }
+
+    .glass-card-body {
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      line-height: var(--leading-relaxed);
+    }
+
+    /* CTA button specimen */
+    .btn-accent {
+      display: inline-block;
+      margin-top: var(--space-4);
+      padding: var(--space-3) var(--space-6);
+      background-color: var(--color-accent);
+      color: #fff;
+      font-family: var(--font-heading);
+      font-weight: var(--font-weight-semibold);
+      font-size: var(--text-sm);
+      border-radius: var(--radius-full);
+      border: none;
+      cursor: pointer;
+      box-shadow: var(--shadow-glow);
+      transition: background-color var(--transition-fast);
+    }
+
+    .btn-accent:hover {
+      background-color: var(--color-accent-hover);
+    }
+
+    /* Shadow specimens */
+    .shadow-specimens {
+      display: flex;
+      gap: var(--space-6);
+      flex-wrap: wrap;
+    }
+
+    .shadow-box {
+      width: 100px;
+      height: 60px;
+      background: var(--color-surface);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="section">
+    <p class="section-title">GMStudio Design Tokens — Visual Verification</p>
+  </div>
+
+  <!-- Color Swatches -->
+  <div class="section">
+    <p class="section-title">Colors</p>
+    <div class="swatches">
+      <div class="swatch">
+        <div class="swatch-block" style="background-color: var(--color-bg);"></div>
+        <span class="swatch-label">--color-bg<br>#0A0A0F</span>
+      </div>
+      <div class="swatch">
+        <div class="swatch-block" style="background-color: var(--color-surface);"></div>
+        <span class="swatch-label">--color-surface<br>#13131A</span>
+      </div>
+      <div class="swatch">
+        <div class="swatch-block" style="background-color: var(--color-surface-raised);"></div>
+        <span class="swatch-label">--color-surface-raised<br>#1A1A24</span>
+      </div>
+      <div class="swatch">
+        <div class="swatch-block" style="background-color: var(--color-accent);"></div>
+        <span class="swatch-label">--color-accent<br>#6366F1</span>
+      </div>
+      <div class="swatch">
+        <div class="swatch-block" style="background-color: var(--color-accent-hover);"></div>
+        <span class="swatch-label">--color-accent-hover<br>#4F46E5</span>
+      </div>
+      <div class="swatch">
+        <div class="swatch-block" style="background-color: var(--color-accent-surface);"></div>
+        <span class="swatch-label">--color-accent-surface<br>#1E1B4B</span>
+      </div>
+      <div class="swatch">
+        <div class="swatch-block" style="background-color: var(--color-text);"></div>
+        <span class="swatch-label">--color-text<br>#F8F8F8</span>
+      </div>
+      <div class="swatch">
+        <div class="swatch-block" style="background-color: var(--color-text-muted);"></div>
+        <span class="swatch-label">--color-text-muted<br>#9CA3AF</span>
+      </div>
+      <div class="swatch">
+        <div class="swatch-block" style="background-color: var(--color-text-subtle);"></div>
+        <span class="swatch-label">--color-text-subtle<br>#6B7280</span>
+      </div>
+      <div class="swatch">
+        <div class="swatch-block" style="background-color: var(--color-border);"></div>
+        <span class="swatch-label">--color-border<br>rgba(248,248,248,0.08)</span>
+      </div>
+      <div class="swatch">
+        <div class="swatch-block" style="background-color: var(--color-border-accent);"></div>
+        <span class="swatch-label">--color-border-accent<br>rgba(99,102,241,0.30)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Typography: Headings -->
+  <div class="section">
+    <p class="section-title">Typography — Headings (Space Grotesk)</p>
+
+    <div class="type-specimen">
+      <p class="type-label">--text-5xl / --font-heading / --font-weight-bold / --tracking-tight</p>
+      <div style="font-family: var(--font-heading); font-size: var(--text-5xl); font-weight: var(--font-weight-bold); letter-spacing: var(--tracking-tight); line-height: var(--leading-tight);">
+        GMStudio
+      </div>
+    </div>
+
+    <div class="type-specimen">
+      <p class="type-label">--text-3xl / --font-heading / --font-weight-semibold</p>
+      <div style="font-family: var(--font-heading); font-size: var(--text-3xl); font-weight: var(--font-weight-semibold); line-height: var(--leading-snug);">
+        Presença Digital que Converte
+      </div>
+    </div>
+
+    <div class="type-specimen">
+      <p class="type-label">--text-xl / --font-heading / --font-weight-medium</p>
+      <div style="font-family: var(--font-heading); font-size: var(--text-xl); font-weight: var(--font-weight-medium);">
+        Lojas Online, Landing Pages, Sites Institucionais
+      </div>
+    </div>
+  </div>
+
+  <!-- Typography: Body -->
+  <div class="section">
+    <p class="section-title">Typography — Body (Inter)</p>
+
+    <div class="type-specimen">
+      <p class="type-label">--text-base / --font-body / --leading-normal</p>
+      <div style="font-family: var(--font-body); font-size: var(--text-base); line-height: var(--leading-normal); max-width: 560px;">
+        A GMStudio cria experiências digitais para empresas e empreendedores que querem crescer online. Do cardápio digital ao e-commerce completo, entregamos projetos que vendem.
+      </div>
+    </div>
+
+    <div class="type-specimen" style="margin-top: var(--space-4);">
+      <p class="type-label">--text-sm / --font-body / --color-text-muted</p>
+      <div style="font-family: var(--font-body); font-size: var(--text-sm); color: var(--color-text-muted); line-height: var(--leading-relaxed); max-width: 480px;">
+        Projetos entregues com prazo, qualidade e suporte. Entre em contato e receba um orçamento sem compromisso.
+      </div>
+    </div>
+  </div>
+
+  <!-- Glassmorphism Card -->
+  <div class="section">
+    <p class="section-title">Glassmorphism Card (D-05)</p>
+    <div class="glass-card">
+      <div class="glass-card-title">Projeto: Cardápio Digital</div>
+      <p class="glass-card-body">
+        Sistema de cardápio online com pedidos via WhatsApp, categorias de produtos e atualização fácil pelo cliente. Entregue em 7 dias.
+      </p>
+      <button class="btn-accent">Ver Projeto</button>
+    </div>
+  </div>
+
+  <!-- Shadows -->
+  <div class="section">
+    <p class="section-title">Shadows</p>
+    <div class="shadow-specimens">
+      <div class="shadow-box" style="box-shadow: var(--shadow-sm);">--shadow-sm</div>
+      <div class="shadow-box" style="box-shadow: var(--shadow-md);">--shadow-md</div>
+      <div class="shadow-box" style="box-shadow: var(--shadow-lg);">--shadow-lg</div>
+      <div class="shadow-box" style="box-shadow: var(--shadow-glow);">--shadow-glow</div>
+    </div>
+  </div>
+
+</body>
+</html>
