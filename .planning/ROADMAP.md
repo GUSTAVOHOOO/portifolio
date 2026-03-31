@@ -28,7 +28,13 @@ Decimal phases appear between their surrounding integers in numeric order.
   2. Color palette is expressed as named CSS custom properties (`--color-primary`, `--color-secondary`, etc.) in a single file
   3. Typography choices (heading font and body font) are documented with weights and line-height scale
   4. A one-page style guide documents correct and incorrect usage of logo, colors, and fonts
-**Plans**: TBD
+**Plans**: 4 plans
+
+Plans:
+- [ ] 01-02-PLAN.md — CSS design token file (src/styles/tokens.css)
+- [ ] 01-03-PLAN.md — Logo design and production (src/assets/logo/)
+- [ ] 01-04-PLAN.md — Brand style guide (docs/STYLE-GUIDE.md)
+- [ ] 01-05-PLAN.md — Content asset structure and gathering checklist
 
 ### Phase 2: Project Foundation & Data Layer
 **Goal**: A deployable Astro 5 project exists on Cloudflare Pages with brand tokens integrated, all content schemas validated, and all data files populated
@@ -72,7 +78,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Brand Identity & Content Foundation | 0/? | Not started | - |
+| 1. Brand Identity & Content Foundation | 0/4 | Not started | - |
 | 2. Project Foundation & Data Layer | 0/? | Not started | - |
 | 3. UI Components & Site Sections | 0/? | Not started | - |
 | 4. SEO, Performance & Pre-launch Hardening | 0/? | Not started | - |
