@@ -10,7 +10,7 @@
 - [ ] **BRAND-01**: Logo criado com variações (principal, monocromático, favicon)
 - [ ] **BRAND-02**: Paleta de cores definida como tokens CSS (primárias, secundárias, neutras)
 - [ ] **BRAND-03**: Tipografia definida (fontes para títulos e corpo de texto)
-- [ ] **BRAND-04**: Guia de estilo básico documentando uso correto de logo, cores e fontes
+- [x] **BRAND-04**: Guia de estilo básico documentando uso correto de logo, cores e fontes
 
 ### Hero & Base (HERO)
 
@@ -90,7 +90,7 @@
 | BRAND-01 | Phase 1 | Pending |
 | BRAND-02 | Phase 1 | Pending |
 | BRAND-03 | Phase 1 | Pending |
-| BRAND-04 | Phase 1 | Pending |
+| BRAND-04 | Phase 1 | Complete |
 | HERO-01 | Phase 3 | Pending |
 | HERO-02 | Phase 2 | Pending |
 | PORTF-01 | Phase 3 | Pending |
