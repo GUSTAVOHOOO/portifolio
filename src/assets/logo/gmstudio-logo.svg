@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 60" role="img" aria-label="GMStudio">
+  <title>GMStudio</title>
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&amp;display=swap');
+      .gm { font-family: 'Space Grotesk', sans-serif; font-size: 44px; font-weight: 700; fill: #6366F1; letter-spacing: -1px; font-display: swap; }
+      .studio { font-family: 'Space Grotesk', sans-serif; font-size: 44px; font-weight: 600; fill: #F8F8F8; letter-spacing: -0.5px; font-display: swap; }
+    </style>
+  </defs>
+  <rect x="4" y="8" width="10" height="10" fill="#6366F1"/>
+  <text class="gm" x="20" y="48">GM</text>
+  <text class="studio" x="94" y="48">Studio</text>
+</svg>
