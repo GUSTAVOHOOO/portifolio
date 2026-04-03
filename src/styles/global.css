@@ -20,3 +20,58 @@
 body {
   overflow-x: hidden;
 }
+
+/* Smooth scroll + scroll-padding for fixed nav */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 72px; /* 64px nav + 8px breathing room */
+}
+
+/* Section entrance animation — fade-up */
+.section-animate {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.section-animate.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered children */
+.stagger-child {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition-delay: calc(var(--stagger-i, 0) * 80ms);
+}
+.stagger-child.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section-animate,
+  .stagger-child {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  /* Also handled in marquee component */
+}
+
+/* Glassmorphism card */
+.glass-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: var(--shadow-md);
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-base);
+}
+.glass-card:hover {
+  border-color: var(--color-border-accent);
+  box-shadow: var(--shadow-lg), var(--shadow-glow);
+  transform: translateY(-2px);
+}
