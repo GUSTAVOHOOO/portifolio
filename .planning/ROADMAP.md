@@ -58,8 +58,11 @@ Plans:
   3. The floating WhatsApp button is visible and tappable on every section with a pre-filled message
   4. A visitor can submit the contact form (name, email, project type, message) and reach the agency via the form, WhatsApp, email, and social links
   5. The services section lists all four service types (landing page, loja, cardápio, institucional) with icons and descriptions, and the work process steps are visible
-**Plans**: TBD
-**UI hint**: yes
+**Plans**: 2 plans
+
+Plans:
+- [ ] 03-01-PLAN.md — Navigation + Hero + Services + About + global animation infrastructure
+- [ ] 03-02-PLAN.md — Portfolio + Testimonials + Contact + page composition (replaces index.astro)
 
 ### Phase 4: SEO, Performance & Pre-launch Hardening
 **Goal**: The site passes every launch gate: WhatsApp link preview shows the correct image, PageSpeed mobile score is at or above 80, sitemap is indexed, and all Core Web Vitals are within threshold
@@ -80,5 +83,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 |-------|----------------|--------|-----------|
 | 1. Brand Identity & Content Foundation | 0/4 | Not started | - |
 | 2. Project Foundation & Data Layer | 1/3 | In Progress|  |
-| 3. UI Components & Site Sections | 0/? | Not started | - |
+| 3. UI Components & Site Sections | 0/2 | Not started | - |
 | 4. SEO, Performance & Pre-launch Hardening | 0/? | Not started | - |
