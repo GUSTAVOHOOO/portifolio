@@ -5,6 +5,7 @@ status: draft
 shadcn_initialized: false
 preset: none
 created: 2026-04-03
+revised: 2026-04-03
 ---
 
 # Phase 3 — UI Design Contract
@@ -22,8 +23,8 @@ created: 2026-04-03
 | Preset | not applicable | — |
 | Component library | none — native HTML + Astro components | CONTEXT.md D-ARCH-01 |
 | Icon library | astro-icon (SVG, inline) | CLAUDE.md stack table |
-| Heading font | Space Grotesk (400, 500, 600, 700) via Google Fonts | tokens.css `--font-heading` |
-| Body font | Inter (400, 500, 600) via Google Fonts | tokens.css `--font-body` |
+| Heading font | Space Grotesk (400, 700) via Google Fonts | tokens.css `--font-heading` |
+| Body font | Inter (400, 700) via Google Fonts | tokens.css `--font-body` |
 
 **shadcn gate:** Not applicable. This is an Astro project (not React/Next.js/Vite app). No `components.json` required.
 
@@ -55,27 +56,28 @@ All values from `tokens.css`. Multiples of 4.
 
 ## Typography
 
-All roles use tokens from `tokens.css`. Heading roles use `font-heading` (Space Grotesk). Body roles use `font-body` (Inter).
+All roles use tokens from `tokens.css`. Display and Heading roles use `font-heading` (Space Grotesk). Body and Small roles use `font-body` (Inter). Maximum 4 roles, maximum 2 weights.
 
 | Role | Size | CSS Var | Weight | Font | Line Height | Tracking | Usage |
 |------|------|---------|--------|------|-------------|----------|-------|
-| Display | 60px (desktop) / 48px (mobile) | `--text-6xl` / `--text-5xl` | 700 | Space Grotesk | 1.1 (`--leading-tight`) | -0.025em (`--tracking-tight`) | Hero headline |
-| Heading | 36px (desktop) / 30px (mobile) | `--text-4xl` / `--text-3xl` | 700 | Space Grotesk | 1.2 (`--leading-snug`) | -0.025em | Section headings (Services, Portfolio, About, Contact) |
-| Subheading | 24px | `--text-2xl` | 600 | Space Grotesk | 1.2 (`--leading-snug`) | 0 | Card titles, process step headings, team member names |
-| Card Title | 20px | `--text-xl` | 600 | Space Grotesk | 1.2 | 0 | Service card title, portfolio project name |
-| Body | 16px | `--text-base` | 400 | Inter | 1.5 (`--leading-normal`) | 0 | Paragraphs, descriptions, about text, testimonials |
-| Small | 14px | `--text-sm` | 400 | Inter | 1.5 | 0 | Captions, category tags, meta text, muted labels |
-| Label | 12px | `--text-xs` | 500 | Inter | 1.5 | 0.05em (`--tracking-wide`) | Uppercase badge text, nav link labels on mobile |
+| Display | 60px desktop / 48px mobile | `--text-6xl` / `--text-5xl` | 700 | Space Grotesk | 1.1 (`--leading-tight`) | -0.025em (`--tracking-tight`) | Hero headline; stat numbers in About section |
+| Heading | 36px desktop / 30px mobile | `--text-4xl` / `--text-3xl` | 700 | Space Grotesk | 1.2 (`--leading-snug`) | -0.025em | Section headings (Services, Portfolio, About, Contact); card titles; subheadings; process step headings; team member names |
+| Body | 16px | `--text-base` | 400 | Inter | 1.5 (`--leading-normal`) | 0 | Paragraphs, descriptions, about text, testimonials, hero subtitle, contact descriptions |
+| Small | 14px | `--text-sm` | 400 | Inter | 1.5 | 0.05em (`--tracking-wide`) for uppercase instances | Captions, category tags, meta text, muted labels, step descriptions, badge text |
 
-**Weight constraint:** Only 400 (regular) and 700 (bold) for body/display contexts. 600 (semibold) permitted only for card titles and subheadings. No other weights in use.
+**Weight rule:** 700 (bold) for Display and Heading roles, all CTA button labels, and all nav link labels. 400 (regular) for Body and Small roles, all form inputs, placeholders, and muted text. No other weights are used.
 
-**Hero subtitle:** 18px (`--text-lg`), weight 400, Inter, line-height 1.5. Color: `--color-text-muted`.
+**Responsive pairs:** Display and Heading are single roles with responsive sizes — they count as one role each.
+
+**Hero subtitle:** Rendered as Body role (16px, 400, Inter, line-height 1.5, `--color-text-muted`). No separate 18px role.
+
+**Card titles and subheadings:** Rendered as Heading role (responsive 30–36px) for section headings; for inline card contexts where a full Heading is too large, use Heading role at its mobile size (30px) or constrain via container. Do not introduce a separate 20px or 24px role.
 
 ---
 
 ## Color
 
-All values from `tokens.css`. Dark premium palette (D-01, D-02).
+All values from `tokens.css` unless marked as vendor brand. Dark premium palette (D-01, D-02).
 
 | Role | CSS Var | Hex | Usage |
 |------|---------|-----|-------|
@@ -91,11 +93,12 @@ All values from `tokens.css`. Dark premium palette (D-01, D-02).
 | Border | `--color-border` | `rgba(248,248,248,0.08)` | All card borders, glassmorphism hairline, nav bottom border |
 | Border accent | `--color-border-accent` | `rgba(99,102,241,0.30)` | Card border on hover, CTA button outline on hover |
 | Destructive | — | `#EF4444` (Tailwind red-500) | Form error state text and border only |
+| Vendor brand | — | `#25D366` / hover `#128C7E` | WhatsApp brand color — not part of GMStudio color system. Used only for WhatsApp-specific UI elements: floating WhatsApp button background, WhatsApp CTA in contact section, WhatsApp icon fill in contact block. |
 
 **Accent (`#6366F1`) reserved for — and only for:**
 
 1. Primary CTA button background (WhatsApp button in hero, primary form submit)
-2. Floating WhatsApp button background
+2. Floating WhatsApp button background (accent fallback — actual button uses vendor brand `#25D366`)
 3. Indigo radial glow behind hero headline (`background: radial-gradient`)
 4. Nav active link underline indicator
 5. Accent glow on primary CTA hover (`--shadow-glow`: `0 0 24px rgba(99,102,241,0.25)`)
@@ -142,9 +145,9 @@ No JS for hover — Tailwind `transition` utilities only (D-ANIM-03).
 | Border bottom | `1px solid --color-border` |
 | Logo position | Left, 24px from edge |
 | Links (desktop) | Right-aligned, 24px gap: Serviços · Portfólio · Sobre · Contato |
-| Link style | 14px Inter 400, `--color-text-muted`, hover: `--color-text` (200ms) |
+| Link style | Small role (14px Inter 400), `--color-text-muted`, hover: `--color-text` (200ms) |
 | Active indicator | 2px `--color-accent` underline |
-| Mobile trigger | Hamburger icon (astro-icon), 44px touch target |
+| Mobile trigger | Hamburger icon (astro-icon), 44px touch target, `aria-label="Abrir menu"` in closed state toggling to `aria-label="Fechar menu"` in open state. `aria-expanded` reflects open/closed state. |
 | Mobile drawer | Slide-down from top, `--color-surface-raised` background, full-width, links stacked 48px tall each |
 | Hamburger toggle | React island `client:load` — only for open/closed state |
 
@@ -159,10 +162,10 @@ No JS for hover — Tailwind `transition` utilities only (D-ANIM-03).
 | Padding bottom | 96px |
 | Headline | Display role: 60px desktop / 48px mobile, Space Grotesk 700, `--color-text`, tracking -0.025em |
 | Headline placeholder | "Presença digital que converte" (D-HERO-04) |
-| Subtitle | 18px Inter 400, `--color-text-muted`, line-height 1.5, max-width 560px centered |
+| Subtitle | Body role: 16px Inter 400, `--color-text-muted`, line-height 1.5, max-width 560px centered |
 | CTA row | Flex row centered, 16px gap, stacks vertically on mobile |
-| Primary CTA | "Falar no WhatsApp" — filled `--color-accent`, hover `--color-accent-hover` + `--shadow-glow`, 44px height, `--radius-full`, Space Grotesk 600 16px |
-| Secondary CTA | "Ver portfólio" — ghost/outline, `1px solid --color-border`, hover: `border-color: --color-border-accent`, 44px height, `--radius-full`, Space Grotesk 600 16px |
+| Primary CTA | "Falar no WhatsApp" — filled `--color-accent`, hover `--color-accent-hover` + `--shadow-glow`, 44px height, `--radius-full`, Space Grotesk 700 16px |
+| Secondary CTA | "Ver portfólio" — ghost/outline, `1px solid --color-border`, hover: `border-color: --color-border-accent`, 44px height, `--radius-full`, Space Grotesk 700 16px |
 
 ### Services Section (`src/components/ServicesSection.astro`)
 
@@ -170,8 +173,8 @@ No JS for hover — Tailwind `transition` utilities only (D-ANIM-03).
 |----------|-------|
 | Layout | 2-column desktop, 1-column mobile grid |
 | Card style | Glassmorphism contract (see above) |
-| Card content | Icon (top-left, 32px, astro-icon, `--color-accent`), title (Subheading role), description (Body role, `--color-text-muted`) |
-| Process steps (SERV-02) | Horizontal stepper on desktop, vertical on mobile. Steps: Briefing → Desenvolvimento → Entrega. Each step: step number badge (accent bg, white text), step title (Card Title role), step description (Small role, muted) |
+| Card content | Icon (top-left, 32px, astro-icon, `--color-accent`), title (Heading role), description (Body role, `--color-text-muted`) |
+| Process steps (SERV-02) | Horizontal stepper on desktop, vertical on mobile. Steps: Briefing → Desenvolvimento → Entrega. Each step: step number badge (accent bg, white text), step title (Heading role), step description (Small role, muted) |
 | Step connector | 1px dashed `--color-border` horizontal line between steps |
 
 ### Portfolio Grid (`src/components/PortfolioSection.astro`)
@@ -183,10 +186,10 @@ No JS for hover — Tailwind `transition` utilities only (D-ANIM-03).
 | Card style | Glassmorphism contract. Full-bleed thumbnail top, content area bottom |
 | Thumbnail | `aspect-ratio: 16/9`, Astro `<Image />`, `object-fit: cover`, `--radius-lg` top corners only |
 | Card content padding | 16px (`--space-4`) |
-| Project name | Card Title role (20px Space Grotesk 600) |
-| Category tag | 12px Inter 500, uppercase tracking-wide, `--color-accent` text on `--color-accent-surface` bg, `--radius-full`, padding 4px 12px |
-| Card CTA | Entire card is `<a target="_blank">` — no separate button. Hover triggers card hover state |
-| External link icon | Small astro-icon `external-link` (12px) beside project name, `--color-text-muted` |
+| Project name | Heading role (Space Grotesk 700) — constrained to card context width |
+| Category tag | Small role (14px Inter 400), uppercase tracking-wide, `--color-accent` text on `--color-accent-surface` bg, `--radius-full`, padding 4px 12px |
+| Card CTA | Entire card is `<a target="_blank" rel="noopener noreferrer">` — no separate button. Hover triggers card hover state |
+| External link icon | astro-icon `external-link` (12px) beside project name, `--color-text-muted` |
 
 ### About Section (`src/components/AboutSection.astro`)
 
@@ -195,7 +198,7 @@ No JS for hover — Tailwind `transition` utilities only (D-ANIM-03).
 | Layout | Two-column (text left, stats right) on desktop; stacked on mobile |
 | Agency text (ABOUT-01) | Body role paragraphs |
 | Stats row (ABOUT-03) | 3 stat blocks: large number (Display role, `--color-accent`), label (Small role, muted). E.g. "20+ Projetos · 15+ Clientes · 2+ Anos" |
-| Team cards (ABOUT-02) | 3–4 cards in a row (desktop), 2-column (tablet), 1-column (mobile). Glassmorphism. Photo top (circle crop, 80px diameter), name (Subheading), role (Small, muted) |
+| Team cards (ABOUT-02) | 3–4 cards in a row (desktop), 2-column (tablet), 1-column (mobile). Glassmorphism. Photo top (circle crop, 80px diameter), name (Heading role), role label (Small role, muted) |
 | Values (ABOUT-04) | 2-column list of value pills or short sentences. Body role |
 
 ### Testimonials Section (`src/components/TestimonialsSection.astro`)
@@ -207,7 +210,7 @@ No JS for hover — Tailwind `transition` utilities only (D-ANIM-03).
 | Track | Two duplicate sets of cards for seamless loop |
 | Card style | Glassmorphism contract, width 320px fixed, flex-shrink: 0 |
 | Card gap | 24px (`--space-6`) |
-| Card content | Quote text (Body role, italic), client name (Small role 600 weight), client photo (40px circle, if available), company/context (Small role, muted) |
+| Card content | Quote text (Body role, italic), client name (Small role, weight 700), client photo (40px circle, if available), company/context (Small role, muted) |
 | Quote mark | `"` in Display role, `--color-accent`, opacity 0.4, positioned top-left |
 | Pause on hover | `animation-play-state: paused` on `.marquee-track:hover` — CSS only |
 
@@ -216,12 +219,12 @@ No JS for hover — Tailwind `transition` utilities only (D-ANIM-03).
 | Property | Value |
 |----------|-------|
 | Layout | Two-column desktop (WhatsApp block left, form right); stacked mobile |
-| WhatsApp block | Large WhatsApp icon (48px, green `#25D366`), Heading role headline, Body role description, WhatsApp CTA button (same style as hero primary CTA but green bg `#25D366`, hover `#128C7E`) |
+| WhatsApp block | Large WhatsApp icon (48px, `#25D366` vendor brand), Heading role headline, Body role description, WhatsApp CTA button (vendor brand bg `#25D366`, hover `#128C7E`) |
 | WhatsApp URL | `https://wa.me/{phone}?text=Olá,%20vim%20pelo%20site%20da%20GMStudio` (phone TBD, placeholder in data) |
 | Agency email (CONT-04) | Displayed as plain `<a href="mailto:...">`, Body role, `--color-accent` color |
 | Social links (CONT-03) | Instagram + LinkedIn icons (astro-icon, 24px), `--color-text-muted` fill, hover `--color-text`, 8px gap |
 | Form (CONT-02) | React island `client:load`. Fields: nome (text), email (email), tipo de projeto (select), mensagem (textarea 4 rows). Submit: "Enviar mensagem" filled `--color-accent` button |
-| Form field style | `--color-surface` bg, `1px solid --color-border`, `--radius-md`, 16px padding, `--text-base`, focus: `border-color: --color-accent`, `outline: none` |
+| Form field style | `--color-surface` bg, `1px solid --color-border`, `--radius-md`, 16px padding, Body role (16px), focus: `border-color: --color-accent`, `outline: none` |
 | Select options | "Landing Page", "Loja Online", "Cardápio Digital", "Site Institucional", "Outro" |
 
 ### Floating WhatsApp Button (in `BaseLayout.astro`)
@@ -230,11 +233,11 @@ No JS for hover — Tailwind `transition` utilities only (D-ANIM-03).
 |----------|-------|
 | Position | `fixed bottom-6 right-6 z-40` (24px from bottom, 24px from right) |
 | Size | 56px × 56px circle |
-| Background | `#25D366` (WhatsApp green) |
+| Background | `#25D366` (WhatsApp vendor brand — not GMStudio accent) |
 | Hover | `#128C7E`, `--shadow-glow` with green tint |
 | Icon | WhatsApp SVG icon, 28px, white |
 | Touch target | 56px — meets 44px minimum |
-| Aria-label | "Falar no WhatsApp" |
+| Aria-label | `aria-label="Falar no WhatsApp"` (static — button does not toggle) |
 
 ---
 
@@ -348,7 +351,7 @@ All copy in Portuguese (pt-BR). Audience: Brazilian empreendedores.
 | Focus ring | `focus-visible:outline` — 2px `--color-accent` offset 2px. Never suppress focus outlines. |
 | Touch targets | Minimum 44px height/width for all interactive elements |
 | Reduced motion | `@media (prefers-reduced-motion: reduce)` disables marquee, fade-up animations |
-| Nav mobile | `aria-expanded` on hamburger button. Drawer: `role="dialog"` or `role="navigation"`. |
+| Nav mobile hamburger | `aria-label="Abrir menu"` in closed state, `aria-label="Fechar menu"` in open state. `aria-expanded="false"` / `"true"` toggled by React island. Drawer: `role="navigation"`. |
 | Form | All inputs have `<label>` elements (visible or sr-only). `aria-required="true"` on required fields. `aria-describedby` linking to error messages. |
 | Images | All `<Image />` components require meaningful `alt` text. Decorative images: `alt=""`. |
 | External links | `rel="noopener noreferrer"` on all `target="_blank"` links. Screen reader note: add `aria-label="Visitar {project name} (abre em nova aba)"`. |
@@ -382,4 +385,5 @@ No third-party component registries are used in this phase. All components are h
 
 *Phase: 03-ui-components-site-sections*
 *UI-SPEC created: 2026-04-03*
+*UI-SPEC revised: 2026-04-03 — checker fixes: typography collapsed to 4 roles and 2 weights; hamburger aria-label declared; WhatsApp vendor brand added to color table*
 *Sources: 03-CONTEXT.md (26 decisions), tokens.css (all values), 01-CONTEXT.md (brand decisions D-01–D-05)*
