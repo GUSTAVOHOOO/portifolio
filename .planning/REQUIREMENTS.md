@@ -48,7 +48,7 @@
 ### SEO & Performance (SEO)
 
 - [ ] **SEO-01**: Open Graph tags configuradas para preview correto ao compartilhar no WhatsApp e redes sociais
-- [ ] **SEO-02**: Imagens otimizadas (formato WebP, dimensões corretas, lazy loading)
+- [x] **SEO-02**: Imagens otimizadas (formato WebP, dimensões corretas, lazy loading)
 - [ ] **SEO-03**: Sitemap.xml e robots.txt configurados para indexação no Google
 
 ## v2 Requirements
@@ -107,7 +107,7 @@
 | CONT-03 | Phase 3 | Pending |
 | CONT-04 | Phase 3 | Pending |
 | SEO-01 | Phase 4 | Pending |
-| SEO-02 | Phase 2 | Pending |
+| SEO-02 | Phase 2 | Complete |
 | SEO-03 | Phase 4 | Pending |
 
 **Coverage:**
