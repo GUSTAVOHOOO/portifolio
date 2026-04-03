@@ -1,0 +1,202 @@
+---
+import { getCollection } from 'astro:content';
+
+const services = await getCollection('services');
+
+// Hardcoded process steps (not from a collection)
+const processSteps = [
+  {
+    number: 1,
+    title: 'Briefing',
+    description: 'Entendemos seu negócio, público e objetivos para alinhar expectativas antes de começar.',
+  },
+  {
+    number: 2,
+    title: 'Desenvolvimento',
+    description: 'Criamos o layout e desenvolvemos cada detalhe do site com atenção ao design e à performance.',
+  },
+  {
+    number: 3,
+    title: 'Entrega',
+    description: 'Publicamos o site, entregamos os acessos e garantimos que tudo está funcionando perfeitamente.',
+  },
+];
+---
+
+<section id="servicos" class="section-animate">
+  <div style="max-width: 80rem; margin: 0 auto;">
+    <h2 class="section-heading">O que fazemos</h2>
+
+    <!-- Service cards grid -->
+    <div class="services-grid">
+      {services.map((service) => (
+        <div class="glass-card stagger-child" style="padding: var(--space-8);">
+          <!-- Generic icon fallback (astro-icon not installed) -->
+          <svg
+            width="32"
+            height="32"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="var(--color-accent)"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+          </svg>
+          <h3
+            style="
+              font-family: var(--font-heading);
+              font-size: var(--text-xl);
+              font-weight: 700;
+              color: var(--color-text);
+              margin-top: var(--space-4);
+              margin-bottom: 0;
+            "
+          >
+            {service.data.title}
+          </h3>
+          <p
+            style="
+              font-family: var(--font-body);
+              font-size: var(--text-base);
+              color: var(--color-text-muted);
+              margin-top: var(--space-2);
+              margin-bottom: 0;
+            "
+          >
+            {service.data.description}
+          </p>
+        </div>
+      ))}
+    </div>
+
+    <!-- Process steps -->
+    <div style="margin-top: var(--space-16);">
+      <h2 class="section-heading">Como trabalhamos</h2>
+
+      <div class="process-steps">
+        {processSteps.map((step, i) => (
+          <div class="process-step stagger-child">
+            <div
+              style="
+                width: 32px;
+                height: 32px;
+                border-radius: 9999px;
+                background: var(--color-accent-surface);
+                color: var(--color-accent);
+                font-family: var(--font-heading);
+                font-weight: 700;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: var(--text-sm);
+                flex-shrink: 0;
+              "
+            >
+              {step.number}
+            </div>
+            <h3
+              style="
+                font-family: var(--font-heading);
+                font-size: var(--text-xl);
+                font-weight: 700;
+                line-height: var(--leading-snug);
+                color: var(--color-text);
+                margin-top: var(--space-4);
+                margin-bottom: 0;
+              "
+            >
+              {step.title}
+            </h3>
+            <p
+              style="
+                font-family: var(--font-body);
+                font-size: var(--text-sm);
+                color: var(--color-text-muted);
+                margin-top: var(--space-2);
+                margin-bottom: 0;
+              "
+            >
+              {step.description}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  section#servicos {
+    padding: var(--space-16) var(--space-4);
+  }
+
+  @media (min-width: 1024px) {
+    section#servicos {
+      padding: var(--space-24) var(--space-4);
+    }
+  }
+
+  .section-heading {
+    font-family: var(--font-heading);
+    font-size: var(--text-3xl);
+    font-weight: 700;
+    line-height: var(--leading-snug);
+    letter-spacing: var(--tracking-tight);
+    color: var(--color-text);
+    text-align: center;
+    margin-bottom: var(--space-12);
+    margin-top: 0;
+  }
+
+  @media (min-width: 1024px) {
+    .section-heading {
+      font-size: var(--text-4xl);
+    }
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  @media (min-width: 1024px) {
+    .services-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .process-steps {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+  }
+
+  @media (min-width: 1024px) {
+    .process-steps {
+      flex-direction: row;
+      gap: 0;
+      align-items: flex-start;
+    }
+
+    .process-step {
+      flex: 1;
+      position: relative;
+      padding-right: var(--space-8);
+    }
+
+    .process-step:not(:last-child)::after {
+      content: '';
+      display: block;
+      position: absolute;
+      right: 0;
+      top: 16px;
+      width: var(--space-8);
+      height: 1px;
+      border-top: 1px dashed var(--color-border);
+    }
+  }
+</style>

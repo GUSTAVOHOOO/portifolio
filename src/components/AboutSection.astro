@@ -1,0 +1,262 @@
+---
+import { getCollection } from 'astro:content';
+
+const team = await getCollection('team');
+
+const stats = [
+  { value: '20+', label: 'Projetos' },
+  { value: '15+', label: 'Clientes' },
+  { value: '2+', label: 'Anos' },
+];
+
+const values = [
+  { name: 'Transparência', description: 'Comunicação clara em todas as etapas do projeto.' },
+  { name: 'Qualidade', description: 'Cada detalhe importa. Entregamos menos para fazer melhor.' },
+  { name: 'Resultado', description: 'O sucesso do seu negócio é a nossa métrica de sucesso.' },
+  { name: 'Parceria', description: 'Não somos apenas fornecedores — somos parceiros do seu crescimento.' },
+];
+---
+
+<section id="sobre" class="section-animate">
+  <div style="max-width: 80rem; margin: 0 auto;">
+    <h2 class="section-heading">Sobre a GMStudio</h2>
+
+    <!-- Agency story + stats (two-column on desktop) -->
+    <div class="story-grid">
+      <!-- Left: story text -->
+      <div>
+        <p
+          style="
+            font-family: var(--font-body);
+            font-size: var(--text-base);
+            color: var(--color-text-muted);
+            line-height: var(--leading-relaxed);
+            margin: 0 0 var(--space-6);
+          "
+        >
+          A GMStudio nasceu da vontade de ajudar empreendedores brasileiros a terem presença digital de qualidade — sem complicação e sem pagar caro por isso.
+        </p>
+        <p
+          style="
+            font-family: var(--font-body);
+            font-size: var(--text-base);
+            color: var(--color-text-muted);
+            line-height: var(--leading-relaxed);
+            margin: 0;
+          "
+        >
+          Combinamos design cuidadoso com tecnologia moderna para criar sites que não só ficam bonitos, mas que geram resultados reais para o seu negócio.
+        </p>
+      </div>
+
+      <!-- Right: stats -->
+      <div class="stats-row">
+        {stats.map((stat) => (
+          <div class="stagger-child" style="text-align: center;">
+            <div class="stat-value">{stat.value}</div>
+            <div
+              style="
+                font-family: var(--font-body);
+                font-size: var(--text-sm);
+                color: var(--color-text-muted);
+                text-transform: uppercase;
+                letter-spacing: var(--tracking-wide);
+                margin-top: var(--space-1);
+              "
+            >
+              {stat.label}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Values block -->
+    <div style="margin-top: var(--space-12);">
+      <h2 class="section-heading">Nossos valores</h2>
+      <div class="values-grid">
+        {values.map((value) => (
+          <div class="stagger-child">
+            <h3
+              style="
+                font-family: var(--font-heading);
+                font-size: var(--text-xl);
+                font-weight: 700;
+                color: var(--color-text);
+                margin: 0 0 var(--space-2);
+              "
+            >
+              {value.name}
+            </h3>
+            <p
+              style="
+                font-family: var(--font-body);
+                font-size: var(--text-base);
+                color: var(--color-text-muted);
+                margin: 0;
+                line-height: var(--leading-normal);
+              "
+            >
+              {value.description}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Team cards (only if team data exists) -->
+    {team.length > 0 && (
+      <div style="margin-top: var(--space-12);">
+        <h2 class="section-heading">Nossa equipe</h2>
+        <div class="team-grid">
+          {team.map((member) => (
+            <div class="glass-card stagger-child" style="padding: var(--space-8); text-align: center;">
+              {member.data.photo ? (
+                <img
+                  src={member.data.photo}
+                  alt={member.data.name}
+                  loading="lazy"
+                  decoding="async"
+                  width="80"
+                  height="80"
+                  style="
+                    width: 80px;
+                    height: 80px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                    margin: 0 auto;
+                    display: block;
+                  "
+                />
+              ) : (
+                <div
+                  aria-hidden="true"
+                  style="
+                    width: 80px;
+                    height: 80px;
+                    border-radius: 50%;
+                    background: var(--color-accent-surface);
+                    color: var(--color-accent);
+                    font-family: var(--font-heading);
+                    font-weight: 700;
+                    font-size: var(--text-2xl);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin: 0 auto;
+                  "
+                >
+                  {member.data.name.charAt(0)}
+                </div>
+              )}
+              <h3
+                style="
+                  font-family: var(--font-heading);
+                  font-size: var(--text-xl);
+                  font-weight: 700;
+                  color: var(--color-text);
+                  margin: var(--space-4) 0 0;
+                "
+              >
+                {member.data.name}
+              </h3>
+              <p
+                style="
+                  font-family: var(--font-body);
+                  font-size: var(--text-sm);
+                  color: var(--color-text-muted);
+                  margin: var(--space-1) 0 0;
+                "
+              >
+                {member.data.role}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+  </div>
+</section>
+
+<style>
+  section#sobre {
+    padding: var(--space-16) var(--space-4);
+  }
+
+  @media (min-width: 1024px) {
+    section#sobre {
+      padding: var(--space-24) var(--space-4);
+    }
+  }
+
+  .section-heading {
+    font-family: var(--font-heading);
+    font-size: var(--text-3xl);
+    font-weight: 700;
+    line-height: var(--leading-snug);
+    letter-spacing: var(--tracking-tight);
+    color: var(--color-text);
+    text-align: center;
+    margin-bottom: var(--space-12);
+    margin-top: 0;
+  }
+
+  @media (min-width: 1024px) {
+    .section-heading {
+      font-size: var(--text-4xl);
+    }
+  }
+
+  .story-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-12);
+  }
+
+  @media (min-width: 1024px) {
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-16);
+      align-items: center;
+    }
+  }
+
+  .stats-row {
+    display: flex;
+    gap: var(--space-8);
+    justify-content: center;
+  }
+
+  .stat-value {
+    font-family: var(--font-heading);
+    font-size: var(--text-5xl);
+    font-weight: 700;
+    color: var(--color-accent);
+    line-height: 1;
+  }
+
+  @media (min-width: 1024px) {
+    .stat-value {
+      font-size: var(--text-6xl);
+    }
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  @media (min-width: 1024px) {
+    .values-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: var(--space-6);
+  }
+</style>
