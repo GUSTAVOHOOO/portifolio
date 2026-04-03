@@ -15,7 +15,7 @@
 ### Hero & Base (HERO)
 
 - [ ] **HERO-01**: Seção hero com proposta de valor clara e CTA de contato visível
-- [ ] **HERO-02**: Site responsivo com layout mobile-first
+- [x] **HERO-02**: Site responsivo com layout mobile-first
 
 ### Portfólio (PORTF)
 
@@ -92,7 +92,7 @@
 | BRAND-03 | Phase 1 | Pending |
 | BRAND-04 | Phase 1 | Complete |
 | HERO-01 | Phase 3 | Pending |
-| HERO-02 | Phase 2 | Pending |
+| HERO-02 | Phase 2 | Complete |
 | PORTF-01 | Phase 3 | Pending |
 | PORTF-02 | Phase 3 | Pending |
 | SERV-01 | Phase 3 | Pending |
