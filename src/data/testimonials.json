@@ -1,0 +1,16 @@
+[
+  {
+    "id": "cliente-1",
+    "author": "João Silva",
+    "role": "Proprietário",
+    "company": "Padaria do João",
+    "text": "A GMStudio transformou minha padaria com uma loja online incrível. As vendas online cresceram 40% no primeiro mês."
+  },
+  {
+    "id": "cliente-2",
+    "author": "Maria Santos",
+    "role": "Gerente",
+    "company": "Barbearia Style",
+    "text": "O site ficou exatamente como eu imaginava. Profissional, moderno e meus clientes adoraram."
+  }
+]

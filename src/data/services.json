@@ -1,0 +1,26 @@
+[
+  {
+    "id": "landing-page",
+    "title": "Landing Page",
+    "description": "Página de conversão de alta performance para campanhas e lançamentos.",
+    "icon": "rocket"
+  },
+  {
+    "id": "loja",
+    "title": "Loja Online",
+    "description": "E-commerce completo com catálogo, carrinho e checkout integrado.",
+    "icon": "shopping-bag"
+  },
+  {
+    "id": "cardapio",
+    "title": "Cardápio Digital",
+    "description": "Menu digital interativo para restaurantes, bares e delivery.",
+    "icon": "utensils"
+  },
+  {
+    "id": "institucional",
+    "title": "Site Institucional",
+    "description": "Presença digital profissional para empresas e empreendedores.",
+    "icon": "building"
+  }
+]
