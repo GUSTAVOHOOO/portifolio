@@ -61,7 +61,7 @@ Plans:
 **Plans**: 2 plans
 
 Plans:
-- [ ] 03-01-PLAN.md — Navigation + Hero + Services + About + global animation infrastructure
+- [x] 03-01-PLAN.md — Navigation + Hero + Services + About + global animation infrastructure
 - [ ] 03-02-PLAN.md — Portfolio + Testimonials + Contact + page composition (replaces index.astro)
 
 ### Phase 4: SEO, Performance & Pre-launch Hardening
@@ -83,5 +83,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 |-------|----------------|--------|-----------|
 | 1. Brand Identity & Content Foundation | 0/4 | Not started | - |
 | 2. Project Foundation & Data Layer | 1/3 | In Progress|  |
-| 3. UI Components & Site Sections | 0/2 | Not started | - |
+| 3. UI Components & Site Sections | 1/2 | In Progress|  |
 | 4. SEO, Performance & Pre-launch Hardening | 0/? | Not started | - |
