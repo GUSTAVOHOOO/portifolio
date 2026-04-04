@@ -12,5 +12,19 @@
     "role": "Gerente",
     "company": "Barbearia Style",
     "text": "O site ficou exatamente como eu imaginava. Profissional, moderno e meus clientes adoraram."
+  },
+  {
+    "id": "cliente-3",
+    "author": "Carlos Mendes",
+    "role": "Proprietário",
+    "company": "Restaurante Sabor",
+    "text": "O cardápio digital reduziu os erros de pedido e nossos clientes elogiam muito. Recomendo demais!"
+  },
+  {
+    "id": "cliente-4",
+    "author": "Ana Costa",
+    "role": "Fundadora",
+    "company": "Moda Feminina AC",
+    "text": "Precisava de uma landing page para meu lançamento e a GMStudio entregou muito além do esperado. Resultado incrível."
   }
 ]

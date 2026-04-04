@@ -255,8 +255,14 @@ const values = [
   }
 
   .team-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     gap: var(--space-6);
+    justify-content: center;
+  }
+
+  .team-grid > * {
+    width: 220px;
+    flex-shrink: 0;
   }
 </style>

@@ -3,14 +3,12 @@
     "id": "gustavo",
     "name": "Gustavo",
     "role": "Fundador & Desenvolvedor",
-    "photo": "/src/assets/team/placeholder-400x400.jpg",
     "bio": "Criador da GMStudio, apaixonado por transformar ideias em presença digital."
   },
   {
     "id": "membro-2",
     "name": "Membro da Equipe",
     "role": "Designer",
-    "photo": "/src/assets/team/placeholder-400x400.jpg",
     "bio": "Placeholder — substituir com dados reais."
   }
 ]
