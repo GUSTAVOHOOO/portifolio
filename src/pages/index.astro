@@ -1,64 +1,21 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { getCollection } from 'astro:content';
-import { Image } from 'astro:assets';
-import placeholderImg from '../assets/projects/placeholder-600x400.jpg';
-
-const services = await getCollection('services');
-const team = await getCollection('team');
-const testimonials = await getCollection('testimonials');
-const projects = await getCollection('projects');
+import Nav from '../components/Nav.astro';
+import HeroSection from '../components/HeroSection.astro';
+import ServicesSection from '../components/ServicesSection.astro';
+import PortfolioSection from '../components/PortfolioSection.astro';
+import AboutSection from '../components/AboutSection.astro';
+import TestimonialsSection from '../components/TestimonialsSection.astro';
+import ContactSection from '../components/ContactSection.astro';
 ---
-<BaseLayout>
-  <main class="min-h-screen px-4 py-8 max-w-screen-lg mx-auto">
-    <h1 class="font-heading text-3xl font-semibold text-text mb-8">
-      GMStudio — Verificação Phase 2
-    </h1>
-
-    <section class="mb-8">
-      <h2 class="font-heading text-xl font-semibold text-accent mb-4">Coleções de Conteúdo</h2>
-      <ul class="space-y-2 text-text-muted">
-        <li>Serviços: {services.length} entradas</li>
-        <li>Equipe: {team.length} entradas</li>
-        <li>Depoimentos: {testimonials.length} entradas</li>
-        <li>Projetos: {projects.length} entradas</li>
-      </ul>
-    </section>
-
-    <section class="mb-8">
-      <h2 class="font-heading text-xl font-semibold text-accent mb-4">Serviços</h2>
-      <div class="grid gap-4">
-        {services.map((s) => (
-          <div class="bg-surface p-4 rounded-lg border border-border">
-            <p class="font-heading font-semibold text-text">{s.data.title}</p>
-            <p class="text-sm text-text-muted">{s.data.description}</p>
-          </div>
-        ))}
-      </div>
-    </section>
-
-    <section class="mb-8">
-      <h2 class="font-heading text-xl font-semibold text-accent mb-4">Imagem Otimizada (SEO-02)</h2>
-      <Image
-        src={placeholderImg}
-        alt="Placeholder do projeto"
-        width={600}
-        height={400}
-        class="rounded-lg w-full max-w-[600px]"
-      />
-      <p class="text-sm text-text-muted mt-2">
-        Se esta imagem renderizar como WebP com lazy loading, SEO-02 está funcionando.
-      </p>
-    </section>
-
-    <section class="mb-8">
-      <h2 class="font-heading text-xl font-semibold text-accent mb-4">Projetos</h2>
-      {projects.map((p) => (
-        <div class="bg-surface p-4 rounded-lg border border-border mb-4">
-          <p class="font-heading font-semibold text-text">{p.data.title}</p>
-          <p class="text-sm text-text-muted">{p.data.category} | <a href={p.data.liveUrl} class="text-accent underline">Ver site</a></p>
-        </div>
-      ))}
-    </section>
+<BaseLayout title="GMStudio — Presença digital que converte">
+  <Nav />
+  <main>
+    <HeroSection />
+    <ServicesSection />
+    <PortfolioSection />
+    <AboutSection />
+    <TestimonialsSection />
+    <ContactSection />
   </main>
 </BaseLayout>
