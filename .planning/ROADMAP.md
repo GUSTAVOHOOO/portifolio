@@ -14,7 +14,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [ ] **Phase 1: Brand Identity & Content Foundation** - Create logo, design tokens, and gather all content before any UI work starts
 - [ ] **Phase 2: Project Foundation & Data Layer** - Initialize Astro 5 + Tailwind v4, deploy to Cloudflare Pages, and wire up all content schemas and data files
-- [x] **Phase 3: UI Components & Site Sections** - Build all section components and compose the full single-page site (completed 2026-04-04)
+- [x] **Phase 3: UI Components & Site Sections** - Build all section components and compose the full single-page site (completed 2026-04-04)
 - [ ] **Phase 4: SEO, Performance & Pre-launch Hardening** - Validate Open Graph, Core Web Vitals, sitemap, and launch checklist
 
 ## Phase Details
@@ -72,7 +72,10 @@ Plans:
   1. Sharing the site URL in WhatsApp shows a correctly sized preview image (1200x630), the site title in Portuguese, and the meta description
   2. PageSpeed Insights mobile score is 80 or above with LCP at or below 2.5s and CLS at or below 0.1
   3. `sitemap.xml` and `robots.txt` are accessible at the production URL and `robots.txt` does not block indexing
-**Plans**: TBD
+**Plans**: 1 plan
+
+Plans:
+- [ ] 04-01-PLAN.md — OG image, meta tags, WhatsApp number, robots.txt, sitemap verification, PageSpeed baseline
 
 ## Progress
 
@@ -84,4 +87,14 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 | 1. Brand Identity & Content Foundation | 0/4 | Not started | - |
 | 2. Project Foundation & Data Layer | 1/3 | In Progress|  |
 | 3. UI Components & Site Sections | 2/2 | Complete   | 2026-04-04 |
-| 4. SEO, Performance & Pre-launch Hardening | 0/? | Not started | - |
+| 4. SEO, Performance & Pre-launch Hardening | 0/1 | Not started | - |
+
+### Phase 5: Design Enhancement & Advanced Animations
+
+**Goal:** [To be planned]
+**Requirements**: TBD
+**Depends on:** Phase 4
+**Plans:** 0 plans
+
+Plans:
+- [ ] TBD (run /gsd:plan-phase 5 to break down)
