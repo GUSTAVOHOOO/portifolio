@@ -1,7 +1,7 @@
 ---
 title: "Padaria do João"
 category: "loja"
-thumbnail: "/src/assets/projects/placeholder-600x400.jpg"
+thumbnail: "/images/projects/placeholder-600x400.jpg"
 liveUrl: "https://example.com/padaria-joao"
 featured: true
 ---

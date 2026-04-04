@@ -1,0 +1,142 @@
+---
+import { getCollection } from 'astro:content';
+const testimonials = await getCollection('testimonials');
+---
+
+{testimonials.length > 0 && (
+  <section id="depoimentos" class="section-animate" style="padding: var(--space-24) var(--space-4); overflow: hidden;">
+    <div style="max-width: 80rem; margin: 0 auto;">
+      <h2 style="font-family: var(--font-heading); font-size: var(--text-3xl); font-weight: 700; line-height: var(--leading-snug); letter-spacing: var(--tracking-tight); text-align: center; margin-bottom: var(--space-12); color: var(--color-text);">
+        O que nossos clientes dizem
+      </h2>
+    </div>
+
+    <div class="marquee-wrapper">
+      <div class="marquee-track">
+        {testimonials.map((t) => (
+          <article class="testimonial-card glass-card">
+            <span aria-hidden="true" style="font-family: var(--font-heading); font-size: var(--text-6xl); color: var(--color-accent); opacity: 0.4; position: absolute; top: var(--space-4); left: var(--space-6); line-height: 1;">"</span>
+            <p style="font-family: var(--font-body); font-size: var(--text-base); font-style: italic; color: var(--color-text); line-height: var(--leading-normal); padding-top: var(--space-8);">
+              {t.data.text}
+            </p>
+            <div style="display: flex; align-items: center; gap: 12px; margin-top: var(--space-6);">
+              {t.data.photo ? (
+                <img
+                  src={t.data.photo}
+                  alt={t.data.author}
+                  loading="lazy"
+                  decoding="async"
+                  style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; flex-shrink: 0;"
+                />
+              ) : (
+                <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--color-accent-surface); color: var(--color-accent); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-weight: 700; font-size: var(--text-base); flex-shrink: 0;">
+                  {t.data.author.charAt(0).toUpperCase()}
+                </div>
+              )}
+              <div>
+                <div style="font-family: var(--font-body); font-size: var(--text-sm); font-weight: 700; color: var(--color-text);">
+                  {t.data.author}
+                </div>
+                {(t.data.company || t.data.role) && (
+                  <div style="font-family: var(--font-body); font-size: var(--text-sm); color: var(--color-text-muted);">
+                    {t.data.company ?? t.data.role}
+                  </div>
+                )}
+              </div>
+            </div>
+          </article>
+        ))}
+        {testimonials.map((t) => (
+          <article class="testimonial-card glass-card" aria-hidden="true">
+            <span aria-hidden="true" style="font-family: var(--font-heading); font-size: var(--text-6xl); color: var(--color-accent); opacity: 0.4; position: absolute; top: var(--space-4); left: var(--space-6); line-height: 1;">"</span>
+            <p style="font-family: var(--font-body); font-size: var(--text-base); font-style: italic; color: var(--color-text); line-height: var(--leading-normal); padding-top: var(--space-8);">
+              {t.data.text}
+            </p>
+            <div style="display: flex; align-items: center; gap: 12px; margin-top: var(--space-6);">
+              {t.data.photo ? (
+                <img
+                  src={t.data.photo}
+                  alt={t.data.author}
+                  loading="lazy"
+                  decoding="async"
+                  style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; flex-shrink: 0;"
+                />
+              ) : (
+                <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--color-accent-surface); color: var(--color-accent); display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-weight: 700; font-size: var(--text-base); flex-shrink: 0;">
+                  {t.data.author.charAt(0).toUpperCase()}
+                </div>
+              )}
+              <div>
+                <div style="font-family: var(--font-body); font-size: var(--text-sm); font-weight: 700; color: var(--color-text);">
+                  {t.data.author}
+                </div>
+                {(t.data.company || t.data.role) && (
+                  <div style="font-family: var(--font-body); font-size: var(--text-sm); color: var(--color-text-muted);">
+                    {t.data.company ?? t.data.role}
+                  </div>
+                )}
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
+<style>
+  .marquee-wrapper {
+    overflow: hidden;
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 8%,
+      black 92%,
+      transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 8%,
+      black 92%,
+      transparent 100%
+    );
+  }
+
+  @keyframes marquee-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  .marquee-track {
+    display: flex;
+    gap: var(--space-6);
+    width: max-content;
+    animation: marquee-scroll 30s linear infinite;
+  }
+
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+      animation: none;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+
+  .testimonial-card {
+    width: 320px;
+    flex-shrink: 0;
+    padding: var(--space-6);
+    position: relative;
+  }
+
+  @media (max-width: 639px) {
+    section {
+      padding: var(--space-16) var(--space-4) !important;
+    }
+  }
+</style>
