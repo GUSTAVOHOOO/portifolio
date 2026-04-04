@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://gmstudio.pages.dev/sitemap-index.xml
