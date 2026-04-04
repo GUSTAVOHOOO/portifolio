@@ -14,7 +14,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [ ] **Phase 1: Brand Identity & Content Foundation** - Create logo, design tokens, and gather all content before any UI work starts
 - [ ] **Phase 2: Project Foundation & Data Layer** - Initialize Astro 5 + Tailwind v4, deploy to Cloudflare Pages, and wire up all content schemas and data files
-- [ ] **Phase 3: UI Components & Site Sections** - Build all section components and compose the full single-page site
+- [x] **Phase 3: UI Components & Site Sections** - Build all section components and compose the full single-page site (completed 2026-04-04)
 - [ ] **Phase 4: SEO, Performance & Pre-launch Hardening** - Validate Open Graph, Core Web Vitals, sitemap, and launch checklist
 
 ## Phase Details
@@ -62,7 +62,7 @@ Plans:
 
 Plans:
 - [x] 03-01-PLAN.md — Navigation + Hero + Services + About + global animation infrastructure
-- [ ] 03-02-PLAN.md — Portfolio + Testimonials + Contact + page composition (replaces index.astro)
+- [x] 03-02-PLAN.md — Portfolio + Testimonials + Contact + page composition (replaces index.astro)
 
 ### Phase 4: SEO, Performance & Pre-launch Hardening
 **Goal**: The site passes every launch gate: WhatsApp link preview shows the correct image, PageSpeed mobile score is at or above 80, sitemap is indexed, and all Core Web Vitals are within threshold
@@ -83,5 +83,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 |-------|----------------|--------|-----------|
 | 1. Brand Identity & Content Foundation | 0/4 | Not started | - |
 | 2. Project Foundation & Data Layer | 1/3 | In Progress|  |
-| 3. UI Components & Site Sections | 1/2 | In Progress|  |
+| 3. UI Components & Site Sections | 2/2 | Complete   | 2026-04-04 |
 | 4. SEO, Performance & Pre-launch Hardening | 0/? | Not started | - |
