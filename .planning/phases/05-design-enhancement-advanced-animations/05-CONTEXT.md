@@ -94,6 +94,13 @@ Out of scope: new sections, CMS, per-page case studies (PORTF-05), any server-si
 ### Library Docs (researcher should verify current versions)
 - Motion (motion.dev) — `LazyMotion`, `domAnimation`, `whileInView`, `AnimatePresence`, `layout`
 - ReactBits (reactbits.dev) — Backgrounds: Particles, Aurora, AnimatedGradient; Text: TextReveal or SplitText equivalents
+- Three.js (threejs.org) — 3D/WebGL effects; use only for a specific hero effect if justified — heavy dependency
+- Anime.js (animejs.com/documentation/) — lightweight JS animation engine; alternative to Motion for timeline/sequenced animations
+
+### Design Inspiration (portfolio references)
+- https://viewport-ui.design/categories/desktop/ — curated UI design patterns for desktop portfolio layouts
+- https://www.designspells.com/ — micro-interaction and animation inspiration
+- https://www.cofolios.com/ — portfolio site gallery — study layout, section structure, and visual hierarchy used by top agencies
 
 </canonical_refs>
 
