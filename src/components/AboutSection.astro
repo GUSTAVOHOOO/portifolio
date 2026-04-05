@@ -1,12 +1,13 @@
 ---
 import { getCollection } from 'astro:content';
+import StatsCounter from './StatsCounter.tsx';
 
 const team = await getCollection('team');
 
-const stats = [
-  { value: '20+', label: 'Projetos' },
-  { value: '15+', label: 'Clientes' },
-  { value: '2+', label: 'Anos' },
+const statsData = [
+  { numericValue: 20, suffix: '+', label: 'Projetos' },
+  { numericValue: 15, suffix: '+', label: 'Clientes' },
+  { numericValue: 2,  suffix: '+', label: 'Anos' },
 ];
 
 const values = [
@@ -17,7 +18,7 @@ const values = [
 ];
 ---
 
-<section id="sobre" class="section-animate">
+<section id="sobre">
   <div style="max-width: 80rem; margin: 0 auto;">
     <h2 class="section-heading">Sobre a GMStudio</h2>
 
@@ -50,25 +51,7 @@ const values = [
       </div>
 
       <!-- Right: stats -->
-      <div class="stats-row">
-        {stats.map((stat) => (
-          <div class="stagger-child" style="text-align: center;">
-            <div class="stat-value">{stat.value}</div>
-            <div
-              style="
-                font-family: var(--font-body);
-                font-size: var(--text-sm);
-                color: var(--color-text-muted);
-                text-transform: uppercase;
-                letter-spacing: var(--tracking-wide);
-                margin-top: var(--space-1);
-              "
-            >
-              {stat.label}
-            </div>
-          </div>
-        ))}
-      </div>
+      <StatsCounter stats={statsData} client:visible />
     </div>
 
     <!-- Values block -->
@@ -76,7 +59,7 @@ const values = [
       <h2 class="section-heading">Nossos valores</h2>
       <div class="values-grid">
         {values.map((value) => (
-          <div class="stagger-child">
+          <div>
             <h3
               style="
                 font-family: var(--font-heading);
@@ -110,7 +93,7 @@ const values = [
         <h2 class="section-heading">Nossa equipe</h2>
         <div class="team-grid">
           {team.map((member) => (
-            <div class="glass-card stagger-child" style="padding: var(--space-8); text-align: center;">
+            <div class="glass-card" style="padding: var(--space-8); text-align: center;">
               {member.data.photo ? (
                 <img
                   src={member.data.photo}
