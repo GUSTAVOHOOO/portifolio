@@ -64,22 +64,77 @@ export default function ServicesAnimations({ services, processSteps }: Props) {
           <m.div
             key={service.id}
             {...itemProps}
-            className="glass-card"
-            style={{ padding: 'var(--space-8)' }}
+            className="service-card-premium"
+            whileHover={prefersReduced ? undefined : { y: -6, transition: { duration: 0.2 } }}
+            style={{
+              padding: 'var(--space-8)',
+              background: 'var(--glass-bg)',
+              border: '1px solid var(--glass-border)',
+              backdropFilter: 'var(--glass-blur)',
+              WebkitBackdropFilter: 'var(--glass-blur)',
+              borderRadius: 'var(--radius-lg)',
+              position: 'relative',
+              overflow: 'hidden',
+              transition: 'border-color 0.3s ease, box-shadow 0.3s ease',
+            }}
+            onMouseEnter={(e) => {
+              if (prefersReduced) return
+              const el = e.currentTarget as HTMLDivElement
+              el.style.borderColor = 'rgba(99, 102, 241, 0.5)'
+              el.style.boxShadow = '0 0 30px rgba(99, 102, 241, 0.15), 0 0 60px rgba(139, 92, 246, 0.1)'
+              const shimmer = el.querySelector('.shimmer-sweep') as HTMLDivElement | null
+              if (shimmer) shimmer.style.left = '100%'
+            }}
+            onMouseLeave={(e) => {
+              if (prefersReduced) return
+              const el = e.currentTarget as HTMLDivElement
+              el.style.borderColor = 'var(--glass-border)'
+              el.style.boxShadow = 'none'
+              const shimmer = el.querySelector('.shimmer-sweep') as HTMLDivElement | null
+              if (shimmer) shimmer.style.left = '-100%'
+            }}
           >
-            <svg
-              width="32"
-              height="32"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="var(--color-accent)"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden="true"
-            >
-              <path d={iconPaths[service.icon] ?? iconPaths['building']} />
-            </svg>
+            {/* Shimmer sweep — light streak across the card on hover */}
+            <div
+              className="shimmer-sweep"
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: '-100%',
+                width: '100%',
+                height: '100%',
+                background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.03), transparent)',
+                transition: 'left 0.6s ease',
+                pointerEvents: 'none',
+              }}
+            />
+
+            {/* Icon container with accent glow */}
+            <div style={{
+              width: '48px',
+              height: '48px',
+              borderRadius: '12px',
+              background: 'var(--color-accent-surface)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              boxShadow: '0 0 20px rgba(99, 102, 241, 0.2)',
+            }}>
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="var(--color-accent)"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d={iconPaths[service.icon] ?? iconPaths['building']} />
+              </svg>
+            </div>
+
             <h3 style={{
               fontFamily: 'var(--font-heading)',
               fontSize: 'var(--text-xl)',
