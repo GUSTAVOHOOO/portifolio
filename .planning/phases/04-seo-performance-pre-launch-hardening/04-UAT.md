@@ -1,58 +1,65 @@
 ---
-status: testing
+status: complete
 phase: 04-seo-performance-pre-launch-hardening
 source: [04-01-SUMMARY.md]
 started: 2026-04-04T00:00:00Z
-updated: 2026-04-04T00:00:00Z
+updated: 2026-04-04T18:00:00Z
 ---
 
 ## Current Test
 
-number: 1
-name: robots.txt acessível em produção
-expected: |
-  Acessar https://gmstudio.pages.dev/robots.txt no navegador.
-  Deve retornar texto simples com:
-    User-agent: *
-    Allow: /
-    Sitemap: https://gmstudio.pages.dev/sitemap-index.xml
-awaiting: user response
+[testing complete]
 
 ## Tests
 
 ### 1. robots.txt acessível em produção
-expected: Acessar https://gmstudio.pages.dev/robots.txt — deve mostrar "User-agent: *", "Allow: /", e a diretiva Sitemap apontando para sitemap-index.xml
-result: [pending]
+expected: Acessar /robots.txt — deve mostrar "User-agent: *", "Allow: /", e a diretiva Sitemap
+result: pass
 
 ### 2. OG image acessível em produção
-expected: Acessar https://gmstudio.pages.dev/og-image.png — deve carregar uma imagem 1200x630 com fundo escuro, logo "GMStudio" e tagline visível
-result: [pending]
+expected: Acessar /og-image.png — imagem 1200x630, fundo escuro, logo GMStudio
+result: pass
 
 ### 3. Sitemap XML acessível
-expected: Acessar https://gmstudio.pages.dev/sitemap-index.xml — deve retornar XML válido com entradas de sitemap
-result: [pending]
+expected: Acessar /sitemap-index.xml — XML válido com entradas de sitemap
+result: pass
 
 ### 4. Meta tags OG e Twitter no código-fonte
-expected: Ver código-fonte da homepage (Ctrl+U ou DevTools). Buscar por "og:image" — deve encontrar og:type, og:url, og:title, og:description, og:image, twitter:card, twitter:title, twitter:description, twitter:image
-result: [pending]
+expected: og:type, og:url, og:title, og:description, og:image, twitter:card, twitter:title, twitter:description, twitter:image presentes
+result: pass
 
 ### 5. Número WhatsApp corrigido
-expected: Ver código-fonte da homepage e buscar por "wa.me" — deve mostrar https://wa.me/5543996142514 (não o placeholder 5511999999999)
-result: [pending]
+expected: Todos os links wa.me devem usar 5543996142514
+result: issue
+reported: "2 de 3 links ainda usavam o placeholder 5511999999999 (HeroSection e ContactSection)"
+severity: major
 
 ### 6. Preview OpenGraph (opengraph.xyz)
-expected: Acessar https://www.opengraph.xyz e colar https://gmstudio.pages.dev — o preview deve mostrar: título "GMStudio — Presença digital para empresas", descrição em português, e a imagem escura do GMStudio
-result: [pending]
+expected: Preview com título, descrição e imagem corretos
+result: skipped
+reason: verificação manual — OG image e meta tags confirmadas via código-fonte e acesso direto
 
 ## Summary
 
 total: 6
-passed: 0
-issues: 0
-pending: 6
-skipped: 0
+passed: 4
+issues: 1
+pending: 0
+skipped: 1
 blocked: 0
 
 ## Gaps
 
-[none yet]
+- truth: "Todos os links WhatsApp devem usar o número real 5543996142514"
+  status: fixed
+  reason: "User reported: 2 de 3 links ainda usavam o placeholder 5511999999999"
+  severity: major
+  test: 5
+  root_cause: "whatsappPhone hardcoded em HeroSection.astro e ContactSection.astro — apenas BaseLayout.astro havia sido atualizado"
+  artifacts:
+    - path: "src/components/HeroSection.astro"
+      issue: "whatsappPhone = '5511999999999'"
+    - path: "src/components/ContactSection.astro"
+      issue: "whatsappPhone = '5511999999999'"
+  missing:
+    - "Substituído para 5543996142514 em ambos os arquivos (commit 68b69c7)"
