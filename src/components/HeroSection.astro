@@ -1,5 +1,6 @@
 ---
 import HeroContent from './HeroContent.tsx';
+import AuroraBackground from './AuroraBackground.tsx';
 ---
 
 <section
@@ -16,7 +17,10 @@ import HeroContent from './HeroContent.tsx';
     position: relative;
   "
 >
-  <div style="max-width: 48rem; margin: 0 auto; padding: 0 1rem;">
+  <!-- Aurora animated background — React island, gates animation on client mount -->
+  <AuroraBackground client:load />
+
+  <div style="max-width: 48rem; margin: 0 auto; padding: 0 1rem; position: relative; z-index: 1;">
     <!-- React island: animated headline + CTAs -->
     <HeroContent client:load />
 
@@ -33,19 +37,8 @@ import HeroContent from './HeroContent.tsx';
 </section>
 
 <style>
-  @keyframes hero-mesh-shift {
-    0%   { background-position: 0% 50%; }
-    50%  { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-
+  /* Aurora component provides the animated blobs — keep section background simple */
   .hero-bg-animated {
-    background:
-      radial-gradient(ellipse 120% 80% at 60% -20%, rgba(99, 102, 241, 0.70), transparent 60%),
-      radial-gradient(ellipse 80% 60% at 10% 80%, rgba(139, 92, 246, 0.55), transparent 55%),
-      radial-gradient(ellipse 60% 40% at 90% 60%, rgba(6, 182, 212, 0.45), transparent 50%),
-      var(--color-bg);
-    background-size: 300% 300%;
-    animation: hero-mesh-shift 12s ease infinite;
+    background: var(--color-bg);
   }
 </style>

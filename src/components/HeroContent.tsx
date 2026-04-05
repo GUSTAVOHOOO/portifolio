@@ -12,19 +12,22 @@ const containerVariants = {
   hidden: {},
   show: {
     transition: {
-      staggerChildren: 0.12,
-      delayChildren: 0.1,
+      staggerChildren: 0.15,
+      delayChildren: 0.2,
     },
   },
 }
 
+// Enhanced 3D word-reveal: blur + scale + rotateX flip-in (React Bits style)
 const wordVariants = {
-  hidden: { opacity: 0, y: 28, filter: 'blur(4px)' },
+  hidden: { opacity: 0, y: 40, filter: 'blur(8px)', scale: 0.8, rotateX: 40 },
   show: {
     opacity: 1,
     y: 0,
     filter: 'blur(0px)',
-    transition: { type: 'spring' as const, stiffness: 300, damping: 28 },
+    scale: 1,
+    rotateX: 0,
+    transition: { type: 'spring' as const, stiffness: 200, damping: 25 },
   },
 }
 
@@ -76,13 +79,14 @@ export default function HeroContent() {
           flexWrap: 'wrap',
           justifyContent: 'center',
           gap: '0 0.28em',
+          perspective: '600px',
         }}
       >
         {headlineWords.map((word) => (
           <m.span
             key={word}
             variants={wordVariants}
-            style={{ display: 'inline-block' }}
+            style={{ display: 'inline-block', transformStyle: 'preserve-3d' }}
           >
             {word}
           </m.span>
