@@ -1,32 +1,19 @@
 ---
 import { getCollection } from 'astro:content';
+import ServicesAnimations from './ServicesAnimations.tsx';
 
 const services = await getCollection('services');
+const serviceData = services.map(s => ({
+  id: s.id,
+  title: s.data.title,
+  description: s.data.description,
+  icon: s.data.icon,
+}));
 
-const iconPaths: Record<string, string> = {
-  rocket: 'M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09zm8.5-10L21 3l-3.5 8.5L12 15l-3-3 3.5-8.5zM12 15l-3-3 5.5-1.5L12 15zm-3-3L6.5 14 3 17l4-2 2-3z M15 9a4 4 0 0 0-4 4',
-  'shopping-bag': 'M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0',
-  utensils: 'M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2M7 2v20M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7',
-  building: 'M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z M9 22V12h6v10',
-};
-
-// Hardcoded process steps (not from a collection)
 const processSteps = [
-  {
-    number: 1,
-    title: 'Briefing',
-    description: 'Entendemos seu negócio, público e objetivos para alinhar expectativas antes de começar.',
-  },
-  {
-    number: 2,
-    title: 'Desenvolvimento',
-    description: 'Criamos o layout e desenvolvemos cada detalhe do site com atenção ao design e à performance.',
-  },
-  {
-    number: 3,
-    title: 'Entrega',
-    description: 'Publicamos o site, entregamos os acessos e garantimos que tudo está funcionando perfeitamente.',
-  },
+  { number: 1, title: 'Briefing', description: 'Entendemos seu negócio, público e objetivos para alinhar expectativas antes de começar.' },
+  { number: 2, title: 'Desenvolvimento', description: 'Criamos o layout e desenvolvemos cada detalhe do site com atenção ao design e à performance.' },
+  { number: 3, title: 'Entrega', description: 'Publicamos o site, entregamos os acessos e garantimos que tudo está funcionando perfeitamente.' },
 ];
 ---
 
@@ -34,103 +21,11 @@ const processSteps = [
   <div style="max-width: 80rem; margin: 0 auto;">
     <h2 class="section-heading">O que fazemos</h2>
 
-    <!-- Service cards grid -->
-    <div class="services-grid">
-      {services.map((service) => (
-        <div class="glass-card" style="padding: var(--space-8);">
-          <svg
-            width="32"
-            height="32"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="var(--color-accent)"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            aria-hidden="true"
-          >
-            <path d={iconPaths[service.data.icon] ?? iconPaths['building']} />
-          </svg>
-          <h3
-            style="
-              font-family: var(--font-heading);
-              font-size: var(--text-xl);
-              font-weight: 700;
-              color: var(--color-text);
-              margin-top: var(--space-4);
-              margin-bottom: 0;
-            "
-          >
-            {service.data.title}
-          </h3>
-          <p
-            style="
-              font-family: var(--font-body);
-              font-size: var(--text-base);
-              color: var(--color-text-muted);
-              margin-top: var(--space-2);
-              margin-bottom: 0;
-            "
-          >
-            {service.data.description}
-          </p>
-        </div>
-      ))}
-    </div>
-
-    <!-- Process steps -->
-    <div style="margin-top: var(--space-16);">
-      <h2 class="section-heading">Como trabalhamos</h2>
-
-      <div class="process-steps">
-        {processSteps.map((step, i) => (
-          <div class="process-step">
-            <div
-              style="
-                width: 32px;
-                height: 32px;
-                border-radius: 9999px;
-                background: var(--color-accent-surface);
-                color: var(--color-accent);
-                font-family: var(--font-heading);
-                font-weight: 700;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: var(--text-sm);
-                flex-shrink: 0;
-              "
-            >
-              {step.number}
-            </div>
-            <h3
-              style="
-                font-family: var(--font-heading);
-                font-size: var(--text-xl);
-                font-weight: 700;
-                line-height: var(--leading-snug);
-                color: var(--color-text);
-                margin-top: var(--space-4);
-                margin-bottom: 0;
-              "
-            >
-              {step.title}
-            </h3>
-            <p
-              style="
-                font-family: var(--font-body);
-                font-size: var(--text-sm);
-                color: var(--color-text-muted);
-                margin-top: var(--space-2);
-                margin-bottom: 0;
-              "
-            >
-              {step.description}
-            </p>
-          </div>
-        ))}
-      </div>
-    </div>
+    <ServicesAnimations
+      services={serviceData}
+      processSteps={processSteps}
+      client:visible
+    />
   </div>
 </section>
 
