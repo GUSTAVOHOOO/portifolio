@@ -1,12 +1,13 @@
 ---
 import { getCollection } from 'astro:content';
+import StatsCounter from './StatsCounter.tsx';
 
 const team = await getCollection('team');
 
-const stats = [
-  { value: '20+', label: 'Projetos' },
-  { value: '15+', label: 'Clientes' },
-  { value: '2+', label: 'Anos' },
+const statsData = [
+  { numericValue: 20, suffix: '+', label: 'Projetos' },
+  { numericValue: 15, suffix: '+', label: 'Clientes' },
+  { numericValue: 2,  suffix: '+', label: 'Anos' },
 ];
 
 const values = [
@@ -50,25 +51,7 @@ const values = [
       </div>
 
       <!-- Right: stats -->
-      <div class="stats-row">
-        {stats.map((stat) => (
-          <div style="text-align: center;">
-            <div class="stat-value">{stat.value}</div>
-            <div
-              style="
-                font-family: var(--font-body);
-                font-size: var(--text-sm);
-                color: var(--color-text-muted);
-                text-transform: uppercase;
-                letter-spacing: var(--tracking-wide);
-                margin-top: var(--space-1);
-              "
-            >
-              {stat.label}
-            </div>
-          </div>
-        ))}
-      </div>
+      <StatsCounter stats={statsData} client:visible />
     </div>
 
     <!-- Values block -->
