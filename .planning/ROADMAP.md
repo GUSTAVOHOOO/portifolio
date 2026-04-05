@@ -91,10 +91,11 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 ### Phase 5: Design Enhancement & Advanced Animations
 
-**Goal:** [To be planned]
+**Goal:** Fix UAT-identified bugs (portfolio grid, hero hydration, hero background) and integrate premium 21st.dev + React Bits components for a visually impressive site
 **Requirements**: TBD
 **Depends on:** Phase 4
-**Plans:** 0 plans
+**Plans:** 2 plans (gap closure)
 
 Plans:
-- [ ] TBD (run /gsd:plan-phase 5 to break down)
+- [ ] 05-06-PLAN.md — Fix portfolio grid CSS scoping, hero hydration mismatch, hero background opacity
+- [ ] 05-07-PLAN.md — Premium 21st.dev hero background, React Bits text animations, enhanced service cards
