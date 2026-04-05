@@ -70,8 +70,7 @@ const whatsappUrl = `https://wa.me/${whatsappPhone}?text=${whatsappMessage}`;
         text-decoration: none;
         transition: background 200ms ease;
       "
-      onmouseover="this.style.background='#128C7E'"
-      onmouseout="this.style.background='#25D366'"
+      class="whatsapp-float"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -85,27 +84,11 @@ const whatsappUrl = `https://wa.me/${whatsappPhone}?text=${whatsappMessage}`;
       </svg>
     </a>
 
-    <script>
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0, rootMargin: '0px 0px -60px 0px' }
-      );
-
-      document.querySelectorAll('.section-animate').forEach((el) => {
-        observer.observe(el);
-      });
-
-      document.querySelectorAll('.stagger-child').forEach((el, i) => {
-        (el as HTMLElement).style.setProperty('--stagger-i', String(i));
-        observer.observe(el);
-      });
-    </script>
   </body>
 </html>
+
+<style>
+  .whatsapp-float:hover {
+    background: #128C7E !important;
+  }
+</style>
