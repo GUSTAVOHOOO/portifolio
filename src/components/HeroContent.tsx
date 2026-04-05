@@ -42,14 +42,27 @@ export default function HeroContent() {
   const [mounted, setMounted] = useState(false)
   useEffect(() => setMounted(true), [])
 
+  // Key fix: initial is ALWAYS 'hidden' for both SSR and client (no mismatch).
+  // animate is 'show' only after mounted (so animation triggers post-hydration).
+  // For reduced motion users, skip animation entirely — show immediately.
+  const getInitial = () => {
+    if (prefersReduced) return false // no animation, show immediately
+    return 'hidden' as const
+  }
+
+  const getAnimate = () => {
+    if (prefersReduced) return undefined // already visible via initial=false
+    return mounted ? 'show' as const : 'hidden' as const
+  }
+
   return (
     <LazyMotion features={domAnimation}>
       {/* Headline with word-by-word reveal */}
       <m.h1
         className="hero-heading"
-        variants={prefersReduced ? undefined : containerVariants}
-        initial={(!mounted || prefersReduced) ? false : 'hidden'}
-        animate="show"
+        variants={containerVariants}
+        initial={getInitial()}
+        animate={getAnimate()}
         aria-label="Presença digital que converte"
         style={{
           fontFamily: 'var(--font-heading)',
@@ -68,7 +81,7 @@ export default function HeroContent() {
         {headlineWords.map((word) => (
           <m.span
             key={word}
-            variants={prefersReduced ? undefined : wordVariants}
+            variants={wordVariants}
             style={{ display: 'inline-block' }}
           >
             {word}
@@ -78,9 +91,9 @@ export default function HeroContent() {
 
       {/* Subtitle */}
       <m.p
-        initial={(!mounted || prefersReduced) ? false : { opacity: 0, y: 16 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: prefersReduced ? 0 : 0.6, duration: 0.5, ease: 'easeOut' }}
+        initial={prefersReduced ? false : { opacity: 0, y: 16 }}
+        animate={prefersReduced ? undefined : (mounted ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 })}
+        transition={{ delay: 0.6, duration: 0.5, ease: 'easeOut' }}
         style={{
           fontFamily: 'var(--font-body)',
           fontSize: 'var(--text-base)',
@@ -96,12 +109,12 @@ export default function HeroContent() {
 
       {/* CTA buttons */}
       <m.div
-        variants={prefersReduced ? undefined : {
+        variants={{
           hidden: {},
           show: { transition: { staggerChildren: 0.1, delayChildren: 0.72 } },
         }}
-        initial={(!mounted || prefersReduced) ? false : 'hidden'}
-        animate="show"
+        initial={getInitial()}
+        animate={getAnimate()}
         style={{
           display: 'flex',
           flexWrap: 'wrap',
@@ -112,7 +125,7 @@ export default function HeroContent() {
       >
         {/* Primary CTA: WhatsApp */}
         <m.a
-          variants={prefersReduced ? undefined : ctaVariants}
+          variants={ctaVariants}
           whileTap={prefersReduced ? undefined : { scale: 0.95 }}
           href={whatsappUrl}
           target="_blank"
@@ -156,9 +169,9 @@ export default function HeroContent() {
           Falar no WhatsApp
         </m.a>
 
-        {/* Secondary CTA: Ver portfólio */}
+        {/* Secondary CTA: Ver portfolio */}
         <m.a
-          variants={prefersReduced ? undefined : ctaVariants}
+          variants={ctaVariants}
           href="#portfolio"
           style={{
             border: '1px solid var(--color-border)',
@@ -182,7 +195,7 @@ export default function HeroContent() {
             (e.currentTarget as HTMLAnchorElement).style.borderColor = 'var(--color-border)'
           }}
         >
-          Ver portfólio
+          Ver portfolio
         </m.a>
       </m.div>
     </LazyMotion>
