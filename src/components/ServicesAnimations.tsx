@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react"
 import { useReducedMotion, LazyMotion, domAnimation } from "motion/react"
 import * as m from "motion/react-m"
 
@@ -44,12 +45,14 @@ const item = {
 
 export default function ServicesAnimations({ services, processSteps }: Props) {
   const prefersReduced = useReducedMotion()
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => setMounted(true), [])
 
-  const containerProps = prefersReduced
+  const containerProps = prefersReduced || !mounted
     ? {}
-    : { variants: container, initial: 'hidden', whileInView: 'show', viewport: { once: true, margin: '0px 0px -60px 0px' } }
+    : { variants: container, initial: 'hidden', animate: 'show' }
 
-  const itemProps = prefersReduced
+  const itemProps = prefersReduced || !mounted
     ? {}
     : { variants: item }
 

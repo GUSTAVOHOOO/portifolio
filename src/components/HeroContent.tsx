@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react"
 import { useReducedMotion, LazyMotion, domAnimation } from "motion/react"
 import * as m from "motion/react-m"
 
@@ -38,6 +39,8 @@ const ctaVariants = {
 
 export default function HeroContent() {
   const prefersReduced = useReducedMotion()
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => setMounted(true), [])
 
   return (
     <LazyMotion features={domAnimation}>
@@ -45,7 +48,7 @@ export default function HeroContent() {
       <m.h1
         className="hero-heading"
         variants={prefersReduced ? undefined : containerVariants}
-        initial={prefersReduced ? false : 'hidden'}
+        initial={(!mounted || prefersReduced) ? false : 'hidden'}
         animate="show"
         aria-label="Presença digital que converte"
         style={{
@@ -75,7 +78,7 @@ export default function HeroContent() {
 
       {/* Subtitle */}
       <m.p
-        initial={prefersReduced ? false : { opacity: 0, y: 16 }}
+        initial={(!mounted || prefersReduced) ? false : { opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: prefersReduced ? 0 : 0.6, duration: 0.5, ease: 'easeOut' }}
         style={{
@@ -97,7 +100,7 @@ export default function HeroContent() {
           hidden: {},
           show: { transition: { staggerChildren: 0.1, delayChildren: 0.72 } },
         }}
-        initial={prefersReduced ? false : 'hidden'}
+        initial={(!mounted || prefersReduced) ? false : 'hidden'}
         animate="show"
         style={{
           display: 'flex',

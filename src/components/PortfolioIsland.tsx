@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { LazyMotion, domAnimation, AnimatePresence, useReducedMotion } from "motion/react"
 import * as m from "motion/react-m"
 
@@ -17,6 +17,8 @@ interface Props {
 
 export default function PortfolioIsland({ projects }: Props) {
   const prefersReduced = useReducedMotion()
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => setMounted(true), [])
   const categories = ['Todos', ...Array.from(new Set(projects.map((p) => p.category)))]
   const [active, setActive] = useState('Todos')
 
@@ -74,7 +76,7 @@ export default function PortfolioIsland({ projects }: Props) {
             <m.a
               key={project.id}
               layout={!prefersReduced}
-              initial={prefersReduced ? false : { opacity: 0, scale: 0.95 }}
+              initial={(!mounted || prefersReduced) ? false : { opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={prefersReduced ? undefined : { opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.18, ease: 'easeOut' }}
