@@ -4,7 +4,7 @@ const projects = (await getCollection('projects'))
   .sort((a, b) => Number(b.data.featured) - Number(a.data.featured));
 ---
 
-<section id="portfolio" style="padding: var(--space-24) var(--space-4);">
+<section id="portfolio" class="section-animate" style="padding: var(--space-24) var(--space-4);">
   <div style="max-width: 80rem; margin: 0 auto;">
     <h2 style="font-family: var(--font-heading); font-size: var(--text-3xl); font-weight: 700; line-height: var(--leading-snug); letter-spacing: var(--tracking-tight); text-align: center; margin-bottom: var(--space-12); color: var(--color-text);">
       Nossos projetos
@@ -22,7 +22,7 @@ const projects = (await getCollection('projects'))
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`Visitar ${project.data.title} (abre em nova aba)`}
-            class="project-card glass-card"
+            class="project-card glass-card stagger-child"
             style="display: block; text-decoration: none; overflow: hidden;"
           >
             <div style="width: 100%; aspect-ratio: 16/9; border-radius: var(--radius-lg) var(--radius-lg) 0 0; overflow: hidden; background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-accent-surface) 100%);">

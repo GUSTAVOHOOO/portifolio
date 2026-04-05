@@ -30,14 +30,14 @@ const processSteps = [
 ];
 ---
 
-<section id="servicos">
+<section id="servicos" class="section-animate">
   <div style="max-width: 80rem; margin: 0 auto;">
     <h2 class="section-heading">O que fazemos</h2>
 
     <!-- Service cards grid -->
     <div class="services-grid">
       {services.map((service) => (
-        <div class="glass-card" style="padding: var(--space-8);">
+        <div class="glass-card stagger-child" style="padding: var(--space-8);">
           <svg
             width="32"
             height="32"
@@ -84,7 +84,7 @@ const processSteps = [
 
       <div class="process-steps">
         {processSteps.map((step, i) => (
-          <div class="process-step">
+          <div class="process-step stagger-child">
             <div
               style="
                 width: 32px;

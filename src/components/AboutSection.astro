@@ -17,7 +17,7 @@ const values = [
 ];
 ---
 
-<section id="sobre">
+<section id="sobre" class="section-animate">
   <div style="max-width: 80rem; margin: 0 auto;">
     <h2 class="section-heading">Sobre a GMStudio</h2>
 
@@ -52,7 +52,7 @@ const values = [
       <!-- Right: stats -->
       <div class="stats-row">
         {stats.map((stat) => (
-          <div style="text-align: center;">
+          <div class="stagger-child" style="text-align: center;">
             <div class="stat-value">{stat.value}</div>
             <div
               style="
@@ -76,7 +76,7 @@ const values = [
       <h2 class="section-heading">Nossos valores</h2>
       <div class="values-grid">
         {values.map((value) => (
-          <div>
+          <div class="stagger-child">
             <h3
               style="
                 font-family: var(--font-heading);
@@ -110,7 +110,7 @@ const values = [
         <h2 class="section-heading">Nossa equipe</h2>
         <div class="team-grid">
           {team.map((member) => (
-            <div class="glass-card" style="padding: var(--space-8); text-align: center;">
+            <div class="glass-card stagger-child" style="padding: var(--space-8); text-align: center;">
               {member.data.photo ? (
                 <img
                   src={member.data.photo}
