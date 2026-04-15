@@ -78,6 +78,7 @@ export default function PortfolioIsland({ projects }: Props) {
               layout={!prefersReduced}
               initial={(!mounted || prefersReduced) ? false : { opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
+              suppressHydrationWarning
               exit={prefersReduced ? undefined : { opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.18, ease: 'easeOut' }}
               whileHover={prefersReduced ? undefined : { y: -4, transition: { duration: 0.15 } }}

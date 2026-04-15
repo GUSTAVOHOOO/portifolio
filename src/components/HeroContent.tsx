@@ -62,15 +62,14 @@ export default function HeroContent() {
     <LazyMotion features={domAnimation}>
       {/* Headline with word-by-word reveal */}
       <m.h1
-        className="hero-heading"
+        className="hero-heading text-4xl lg:text-6xl font-bold"
         variants={containerVariants}
         initial={getInitial()}
         animate={getAnimate()}
         aria-label="Presença digital que converte"
+        suppressHydrationWarning
         style={{
           fontFamily: 'var(--font-heading)',
-          fontSize: 'var(--text-5xl)',
-          fontWeight: 700,
           lineHeight: 'var(--leading-tight)',
           letterSpacing: 'var(--tracking-tight)',
           color: 'var(--color-text)',
@@ -100,7 +99,7 @@ export default function HeroContent() {
         transition={{ delay: 0.6, duration: 0.5, ease: 'easeOut' }}
         style={{
           fontFamily: 'var(--font-body)',
-          fontSize: 'var(--text-base)',
+          fontSize: 'var(--text-xl)',
           fontWeight: 400,
           color: 'var(--color-text-muted)',
           lineHeight: 'var(--leading-normal)',

@@ -48,13 +48,13 @@ export default function ServicesAnimations({ services, processSteps }: Props) {
   const [mounted, setMounted] = useState(false)
   useEffect(() => setMounted(true), [])
 
-  const containerProps = prefersReduced || !mounted
-    ? {}
-    : { variants: container, initial: 'hidden', animate: 'show' }
+  const containerProps = !mounted
+    ? { variants: container, initial: false, animate: 'show' }
+    : prefersReduced
+      ? { variants: container, initial: false, animate: 'show' }
+      : { variants: container, initial: 'hidden' as const, animate: 'show' }
 
-  const itemProps = prefersReduced || !mounted
-    ? {}
-    : { variants: item }
+  const itemProps = { variants: item, suppressHydrationWarning: true }
 
   return (
     <LazyMotion features={domAnimation}>
@@ -137,7 +137,7 @@ export default function ServicesAnimations({ services, processSteps }: Props) {
 
             <h3 style={{
               fontFamily: 'var(--font-heading)',
-              fontSize: 'var(--text-xl)',
+              fontSize: 'var(--text-2xl)',
               fontWeight: 700,
               color: 'var(--color-text)',
               marginTop: 'var(--space-4)',

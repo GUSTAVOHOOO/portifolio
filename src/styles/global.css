@@ -43,3 +43,13 @@ html {
   box-shadow: var(--shadow-lg), var(--shadow-glow);
   transform: translateY(-2px);
 }
+
+.stat-value {
+  font-size: var(--text-5xl) !important;
+}
+
+@media (min-width: 1024px) {
+  .stat-value {
+    font-size: var(--text-6xl) !important;
+  }
+}

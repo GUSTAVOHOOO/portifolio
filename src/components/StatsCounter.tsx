@@ -34,9 +34,8 @@ function Counter({ numericValue, suffix, label }: Stat) {
 
   return (
     <div ref={ref} style={{ textAlign: 'center' }}>
-      <div className="stat-value" style={{
+      <div className="stat-value text-5xl lg:text-6xl" style={{
         fontFamily: 'var(--font-heading)',
-        fontSize: 'var(--text-5xl)',
         fontWeight: 700,
         color: 'var(--color-accent)',
         lineHeight: 1,

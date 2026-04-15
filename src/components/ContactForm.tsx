@@ -59,8 +59,9 @@ export default function ContactForm() {
       <input type="checkbox" name="botcheck" style={{ display: 'none' }} tabIndex={-1} autoComplete="off" />
 
       <div style={{ marginBottom: 'var(--space-4)' }}>
-        <label style={labelStyle}>Nome</label>
+        <label htmlFor="name" style={labelStyle}>Nome</label>
         <input
+          id="name"
           type="text"
           name="name"
           placeholder="Seu nome"
@@ -72,8 +73,9 @@ export default function ContactForm() {
       </div>
 
       <div style={{ marginBottom: 'var(--space-4)' }}>
-        <label style={labelStyle}>E-mail</label>
+        <label htmlFor="email" style={labelStyle}>Email</label>
         <input
+          id="email"
           type="email"
           name="email"
           placeholder="seu@email.com"
@@ -85,8 +87,9 @@ export default function ContactForm() {
       </div>
 
       <div style={{ marginBottom: 'var(--space-4)' }}>
-        <label style={labelStyle}>Tipo de projeto</label>
+        <label htmlFor="subject" style={labelStyle}>Assunto</label>
         <select
+          id="subject"
           name="subject"
           required
           aria-required="true"
@@ -104,8 +107,9 @@ export default function ContactForm() {
       </div>
 
       <div style={{ marginBottom: 'var(--space-4)' }}>
-        <label style={labelStyle}>Mensagem</label>
+        <label htmlFor="message" style={labelStyle}>Mensagem</label>
         <textarea
+          id="message"
           name="message"
           rows={4}
           placeholder="Conte um pouco sobre o seu projeto..."
@@ -138,8 +142,8 @@ export default function ContactForm() {
       </button>
 
       {status === 'error' && (
-        <p role="alert" style={{ color: '#EF4444', fontFamily: 'var(--font-body)', fontSize: 'var(--text-sm)', marginTop: '8px' }}>
-          Erro ao enviar. Verifique os campos e tente novamente, ou fale diretamente pelo WhatsApp.
+        <p role="alert" style={{ color: 'var(--color-error, #f87171)', marginTop: 'var(--space-3)', fontSize: 'var(--text-sm)' }}>
+          Ocorreu um erro ao enviar. Tente novamente ou entre em contato pelo WhatsApp.
         </p>
       )}
     </form>
