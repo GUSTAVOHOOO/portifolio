@@ -1,139 +1,24 @@
 ---
-import NavHamburger from './NavHamburger.tsx';
-import logoUrl from '../assets/logo/gmstudio-logo.svg?url';
+import PillNav from "./PillNav.tsx";
+import logoUrl from "../assets/logo/gmstudio-icon-mono.svg?url";
 
 const navLinks = [
-  { href: '#servicos', label: 'Serviços' },
-  { href: '#portfolio', label: 'Portfólio' },
-  { href: '#sobre', label: 'Sobre' },
-  { href: '#contato', label: 'Contato' },
+  { href: "#servicos", label: "Serviços" },
+  { href: "#portfolio", label: "Portfólio" },
+  { href: "#sobre", label: "Sobre" },
+  { href: "#contato", label: "Contato" },
 ] satisfies { href: string; label: string }[];
 ---
 
-<header
-  style="
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 50;
-    height: 64px;
-    background: rgba(10, 10, 15, 0.95);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--color-border);
-  "
->
-  <div
-    style="
-      max-width: 80rem;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 64px;
-      padding: 0 24px;
-    "
-  >
-    <!-- Logo -->
-    <a href="/" aria-label="GMStudio — página inicial">
-      <img src={logoUrl} height="40" alt="GMStudio" style="height: 40px; width: auto;" />
-    </a>
+<PillNav
+  logo={logoUrl}
+  logoAlt="GMStudio"
+  items={navLinks}
+  ctaHref="#contato"
+  baseColor="var(--color-text)"
+  pillColor="var(--color-surface)"
+  pillTextColor="var(--color-text)"
+  hoveredPillTextColor="var(--color-bg)"
+  client:load
+/>
 
-    <!-- Desktop nav -->
-    <nav aria-label="Menu principal" class="desktop-nav">
-      {navLinks.map((link) => (
-        <a href={link.href} class="desktop-nav-link">{link.label}</a>
-      ))}
-      <a href="#contato" class="nav-cta">Solicitar orçamento</a>
-    </nav>
-
-    <!-- Mobile hamburger (React island) -->
-    <div class="mobile-hamburger">
-      <NavHamburger links={navLinks} client:load />
-    </div>
-  </div>
-</header>
-
-<style is:global>
-  /* Desktop nav */
-  .desktop-nav {
-    display: none;
-    gap: 1.5rem;
-    align-items: center;
-  }
-
-  @media (min-width: 1024px) {
-    .desktop-nav {
-      display: flex;
-    }
-    .mobile-hamburger {
-      display: none;
-    }
-  }
-
-  .desktop-nav-link {
-    font-family: var(--font-body);
-    font-size: var(--text-base);
-    font-weight: 700;
-    color: var(--color-text-muted);
-    text-decoration: none;
-    transition: color var(--transition-fast);
-  }
-
-  .desktop-nav-link:hover {
-    color: var(--color-text);
-  }
-
-  .nav-cta {
-    padding: var(--space-2) var(--space-5);
-    background: var(--color-accent);
-    color: white;
-    border-radius: var(--radius-md);
-    font-size: var(--text-sm);
-    font-weight: 600;
-    text-decoration: none;
-    transition: var(--transition-base);
-    white-space: nowrap;
-  }
-
-  .nav-cta:hover {
-    background: var(--color-accent-hover, var(--color-accent));
-    box-shadow: var(--shadow-glow);
-  }
-
-  /* Mobile drawer */
-  .mobile-drawer {
-    position: fixed;
-    top: 64px;
-    left: 0;
-    right: 0;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 300ms ease;
-    background: var(--color-surface-raised);
-    border-bottom: 1px solid var(--color-border);
-    z-index: 49;
-  }
-
-  nav.mobile-drawer[data-open="true"] {
-    max-height: 300px;
-  }
-
-  .mobile-drawer a {
-    display: flex;
-    align-items: center;
-    min-height: 48px;
-    padding: 0 24px;
-    font-family: var(--font-body);
-    font-size: var(--text-base);
-    font-weight: 700;
-    color: var(--color-text-muted);
-    text-decoration: none;
-    transition: color var(--transition-fast);
-  }
-
-  .mobile-drawer a:hover {
-    color: var(--color-text);
-  }
-</style>

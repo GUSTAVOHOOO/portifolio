@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import './NavHamburger.css';
 
 interface NavLink {
   href: string;
@@ -32,18 +33,8 @@ export default function NavHamburger({ links }: Props) {
       <button
         onClick={() => setIsOpen((prev) => !prev)}
         aria-label={isOpen ? 'Fechar menu' : 'Abrir menu'}
-        aria-expanded={isOpen}
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          minHeight: '44px',
-          minWidth: '44px',
-          background: 'transparent',
-          border: 'none',
-          cursor: 'pointer',
-          color: 'var(--color-text)',
-        }}
+        aria-expanded={String(isOpen) as 'true' | 'false'}
+        className="nav-hamburger-btn"
       >
         {isOpen ? <IconX /> : <IconMenu />}
       </button>

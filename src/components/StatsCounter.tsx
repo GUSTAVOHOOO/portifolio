@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react"
 import { LazyMotion, domAnimation, useMotionValue, useTransform, useInView } from "motion/react"
 import * as m from "motion/react-m"
 import { animate } from "motion/react"
+import "./StatsCounter.css"
 
 interface Stat {
   numericValue: number
@@ -33,23 +34,11 @@ function Counter({ numericValue, suffix, label }: Stat) {
   }, [isInView, count, numericValue])
 
   return (
-    <div ref={ref} style={{ textAlign: 'center' }}>
-      <div className="stat-value text-5xl lg:text-6xl" style={{
-        fontFamily: 'var(--font-heading)',
-        fontWeight: 700,
-        color: 'var(--color-accent)',
-        lineHeight: 1,
-      }}>
+    <div ref={ref} className="stat-item">
+      <div className="stat-value text-5xl lg:text-6xl">
         <m.span>{rounded}</m.span>{suffix}
       </div>
-      <div style={{
-        fontFamily: 'var(--font-body)',
-        fontSize: 'var(--text-sm)',
-        color: 'var(--color-text-muted)',
-        textTransform: 'uppercase',
-        letterSpacing: 'var(--tracking-wide)',
-        marginTop: 'var(--space-1)',
-      }}>
+      <div className="stat-label">
         {label}
       </div>
     </div>
@@ -59,11 +48,7 @@ function Counter({ numericValue, suffix, label }: Stat) {
 export default function StatsCounter({ stats }: Props) {
   return (
     <LazyMotion features={domAnimation}>
-      <div className="stats-row" style={{
-        display: 'flex',
-        gap: 'var(--space-8)',
-        justifyContent: 'center',
-      }}>
+      <div className="stats-row">
         {stats.map((stat) => (
           <Counter key={stat.label} {...stat} />
         ))}

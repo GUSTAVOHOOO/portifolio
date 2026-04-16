@@ -7,13 +7,21 @@
 :root {
   /* ─── Color: Backgrounds ─────────────────────────────────── */
   --color-bg:              #0A0A0F;   /* Page background — near-black (D-01) */
+  --color-bg-rgb:          10, 10, 15;
   --color-surface:         #13131A;   /* Card/panel surface */
+  --color-surface-rgb:     19, 19, 26;
   --color-surface-raised:  #1A1A24;   /* Elevated surface (modal, tooltip) */
 
   /* ─── Color: Accent — Indigo (D-02) ─────────────────────── */
   --color-accent:          #6366F1;   /* Primary interactive / CTA / logo GM letters */
+  --color-accent-rgb:      99, 102, 241;
   --color-accent-hover:    #4F46E5;   /* Accent on hover/focus */
   --color-accent-surface:  #1E1B4B;   /* Low-opacity accent background (badge, tag) */
+  
+  /* ─── Color: Brand/Status ────────────────────────────────── */
+  --color-whatsapp:        #25D366;
+  --color-whatsapp-hover:  #128C7E;
+  --color-error:           #F87171;
 
   /* ─── Color: Text ────────────────────────────────────────── */
   --color-text:            #F8F8F8;   /* Primary text — near-white (D-01) */
@@ -25,9 +33,9 @@
   --color-border-accent:   rgba(99, 102, 241, 0.30);   /* Accent-tinted border on hover */
 
   /* ─── Typography: Families ───────────────────────────────── */
-  --font-heading:  'Space Grotesk', system-ui, sans-serif;   /* Geometric sans, D-10 */
-  --font-body:     'Inter', system-ui, sans-serif;            /* Neutral sans, D-11 */
-  --font-mono:     'JetBrains Mono', 'Fira Code', monospace;  /* Code snippets (optional) */
+  --font-heading:  'Geist Sans', system-ui, sans-serif;   /* Tech/creative sans — Vercel Geist */
+  --font-body:     'Geist Sans', system-ui, sans-serif;   /* Mesma família, pesos diferentes */
+  --font-mono:     'Geist Mono', 'JetBrains Mono', monospace; /* Mono para badges, labels e código */
 
   /* ─── Typography: Scale (modular, ratio 1.25 from 16px base) ─ */
   --text-xs:    0.75rem;    /*  12px — captions, labels */

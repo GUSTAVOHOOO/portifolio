@@ -1,49 +1,81 @@
 ---
-import { getCollection } from 'astro:content';
-import ServicesAnimations from './ServicesAnimations.tsx';
+import MagicBento from "./MagicBento.tsx";
 
-const services = await getCollection('services');
-const serviceData = services.map(s => ({
-  id: s.id,
-  title: s.data.title,
-  description: s.data.description,
-  icon: s.data.icon,
-}));
-
-const processSteps = [
-  { number: 1, title: 'Briefing', description: 'Entendemos seu negócio, público e objetivos para alinhar expectativas antes de começar.' },
-  { number: 2, title: 'Desenvolvimento', description: 'Criamos o layout e desenvolvemos cada detalhe do site com atenção ao design e à performance.' },
-  { number: 3, title: 'Entrega', description: 'Publicamos o site, entregamos os acessos e garantimos que tudo está funcionando perfeitamente.' },
+const bentoCards = [
+  {
+    color: "var(--color-surface)",
+    label: "Menu",
+    title: "Cardápio Digital",
+    description: "Menu interativo para restaurantes, bares e delivery.",
+  },
+  {
+    color: "var(--color-surface)",
+    label: "Web",
+    title: "Site Institucional",
+    description:
+      "Presença digital profissional para empresas e empreendedores.",
+  },
+  {
+    color: "var(--color-surface)",
+    label: "Conversão",
+    title: "Landing Page",
+    description: "Página de alta performance para campanhas e lançamentos.",
+  },
+  {
+    color: "var(--color-surface)",
+    label: "E-commerce",
+    title: "Loja Online",
+    description:
+      "E-commerce completo com catálogo, carrinho e checkout integrado.",
+  },
+  {
+    color: "var(--color-surface)",
+    label: "SEO",
+    title: "Performance & SEO",
+    description: "Apareça no Google e carregue em menos de 1 segundo.",
+  },
+  {
+    color: "var(--color-surface)",
+    label: "Suporte",
+    title: "Suporte Contínuo",
+    description: "Atendimento dedicado e manutenção pós-entrega.",
+  },
 ];
 ---
 
-<section id="servicos" class="section-with-eyebrow">
-  <div style="max-width: 80rem; margin: 0 auto;">
-    <span class="eyebrow-label">Serviços</span>
-    <h2 class="section-heading">O que fazemos</h2>
+<section id="servicos" class="services-section">
+  <div class="services-inner">
+    <span class="eyebrow-label">O que criamos</span>
+    <h2 class="section-heading">Feito <em class="accent-italic">sob medida</em><br />para o seu negócio</h2>
 
-    <ServicesAnimations
-      services={serviceData}
-      processSteps={processSteps}
+    <MagicBento
+      cardData={bentoCards}
+      glowColor="var(--color-accent-rgb)"
+      enableStars={true}
+      enableSpotlight={true}
+      enableBorderGlow={true}
+      enableTilt={true}
+      clickEffect={true}
+      enableMagnetism={true}
       client:visible
     />
-
-    <div class="services-cta">
-      <p class="services-cta-text">Pronto para começar?</p>
-      <a href="#contato" class="btn-primary">Solicitar orçamento</a>
-    </div>
   </div>
 </section>
 
 <style>
-  section#servicos {
+  .services-section {
     padding: var(--space-16) var(--space-6);
   }
 
   @media (min-width: 1024px) {
-    section#servicos {
+    .services-section {
       padding: var(--space-24) var(--space-4);
     }
+  }
+
+  .services-inner {
+    max-width: 80rem;
+    margin: 0 auto;
   }
 
   .section-heading {
@@ -54,7 +86,7 @@ const processSteps = [
     letter-spacing: var(--tracking-tight);
     color: var(--color-text);
     text-align: center;
-    margin-bottom: var(--space-12);
+    margin-bottom: var(--space-10);
     margin-top: 0;
   }
 
@@ -63,55 +95,15 @@ const processSteps = [
       font-size: var(--text-5xl);
     }
   }
-</style>
 
-<style is:global>
-  .services-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-6);
-  }
-
-  @media (min-width: 1024px) {
-    .services-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  .process-steps {
+  .bento-wrapper {
     display: flex;
-    flex-direction: column;
-    gap: var(--space-8);
-  }
-
-  @media (min-width: 1024px) {
-    .process-steps {
-      flex-direction: row;
-      gap: 0;
-      align-items: flex-start;
-    }
-
-    .process-step {
-      flex: 1;
-      position: relative;
-      padding-right: var(--space-8);
-    }
-
-    .process-step:not(:last-child)::after {
-      content: '';
-      display: block;
-      position: absolute;
-      right: 0;
-      top: 16px;
-      width: var(--space-8);
-      height: 1px;
-      border-top: 1px dashed var(--color-border);
-    }
+    justify-content: center;
   }
 
   .services-cta {
     text-align: center;
-    margin-top: var(--space-16);
+    margin-top: var(--space-14);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -143,5 +135,41 @@ const processSteps = [
   .btn-primary:hover {
     background: var(--color-accent-hover);
     box-shadow: var(--shadow-glow);
+  }
+</style>
+
+<style is:global>
+  /* MagicBento overrides to match site theme */
+  .card-grid {
+    max-width: 72rem;
+  }
+
+  .magic-bento-card {
+    border-color: var(--color-border);
+    font-family: var(--font-body);
+  }
+
+  .magic-bento-card__label {
+    font-family: var(--font-heading);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    opacity: 0.85;
+  }
+
+  .magic-bento-card__title {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--color-text);
+    margin: 0 0 0.35em;
+  }
+
+  .magic-bento-card__description {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--color-text-muted);
   }
 </style>
