@@ -37,7 +37,7 @@ const navLinks = [
   >
     <!-- Logo -->
     <a href="/" aria-label="GMStudio — página inicial">
-      <img src={logoUrl} height="32" alt="GMStudio" style="height: 32px; width: auto;" />
+      <img src={logoUrl} height="40" alt="GMStudio" style="height: 40px; width: auto;" />
     </a>
 
     <!-- Desktop nav -->
@@ -45,6 +45,7 @@ const navLinks = [
       {navLinks.map((link) => (
         <a href={link.href} class="desktop-nav-link">{link.label}</a>
       ))}
+      <a href="#contato" class="nav-cta">Solicitar orçamento</a>
     </nav>
 
     <!-- Mobile hamburger (React island) -->
@@ -73,7 +74,7 @@ const navLinks = [
 
   .desktop-nav-link {
     font-family: var(--font-body);
-    font-size: var(--text-sm);
+    font-size: var(--text-base);
     font-weight: 700;
     color: var(--color-text-muted);
     text-decoration: none;
@@ -82,6 +83,23 @@ const navLinks = [
 
   .desktop-nav-link:hover {
     color: var(--color-text);
+  }
+
+  .nav-cta {
+    padding: var(--space-2) var(--space-5);
+    background: var(--color-accent);
+    color: white;
+    border-radius: var(--radius-md);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--transition-base);
+    white-space: nowrap;
+  }
+
+  .nav-cta:hover {
+    background: var(--color-accent-hover, var(--color-accent));
+    box-shadow: var(--shadow-glow);
   }
 
   /* Mobile drawer */
@@ -108,7 +126,7 @@ const navLinks = [
     min-height: 48px;
     padding: 0 24px;
     font-family: var(--font-body);
-    font-size: var(--text-sm);
+    font-size: var(--text-base);
     font-weight: 700;
     color: var(--color-text-muted);
     text-decoration: none;

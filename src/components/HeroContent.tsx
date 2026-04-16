@@ -103,7 +103,7 @@ export default function HeroContent() {
           fontWeight: 400,
           color: 'var(--color-text-muted)',
           lineHeight: 'var(--leading-normal)',
-          maxWidth: '560px',
+          maxWidth: '720px',
           margin: 'var(--space-6) auto 0',
         }}
       >
@@ -177,7 +177,7 @@ export default function HeroContent() {
           variants={ctaVariants}
           href="#portfolio"
           style={{
-            border: '1px solid var(--color-border)',
+            border: '1px solid rgba(248, 248, 248, 0.25)',
             borderRadius: 'var(--radius-full)',
             minHeight: '44px',
             padding: '0 var(--space-8)',
@@ -195,11 +195,44 @@ export default function HeroContent() {
             (e.currentTarget as HTMLAnchorElement).style.borderColor = 'var(--color-border-accent)'
           }}
           onMouseLeave={(e) => {
-            (e.currentTarget as HTMLAnchorElement).style.borderColor = 'var(--color-border)'
+            (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(248, 248, 248, 0.25)'
           }}
         >
           Ver portfolio
         </m.a>
+      </m.div>
+
+      {/* Scroll indicator */}
+      <m.div
+        initial={prefersReduced ? false : { opacity: 0 }}
+        animate={prefersReduced ? undefined : (mounted ? { opacity: 0.5 } : { opacity: 0 })}
+        transition={{ delay: 1.2, duration: 0.5 }}
+        style={{
+          position: 'fixed',
+          bottom: 'var(--space-8)',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          zIndex: 10,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: 'var(--space-2)',
+        }}
+        aria-hidden="true"
+      >
+        <span style={{ fontSize: 'var(--text-xs)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+          scroll
+        </span>
+        <m.svg
+          width="16"
+          height="16"
+          viewBox="0 0 16 16"
+          fill="currentColor"
+          animate={!prefersReduced ? { y: [0, 6, 0] } : undefined}
+          transition={!prefersReduced ? { repeat: Infinity, duration: 1.8, ease: 'easeInOut' } : undefined}
+        >
+          <path d="M8 12L2 6h12L8 12z"/>
+        </m.svg>
       </m.div>
     </LazyMotion>
   )

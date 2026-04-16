@@ -53,3 +53,26 @@ html {
     font-size: var(--text-6xl) !important;
   }
 }
+
+/* Eyebrow labels for sections */
+.eyebrow-label {
+  display: block;
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--space-3);
+  text-align: center;
+}
+
+/* Visual separators between sections */
+.section-with-eyebrow {
+  border-top: 1px solid var(--color-border);
+}
+
+/* Remove top border from first section */
+section:first-of-type {
+  border-top: none;
+}

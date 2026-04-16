@@ -16,9 +16,10 @@ const projects = rawProjects.map((p) => ({
 }))
 ---
 
-<section id="portfolio" style="padding: var(--space-24) var(--space-4);">
+<section id="portfolio" class="section-with-eyebrow" style="padding: var(--space-24) var(--space-6);">
   <div style="max-width: 80rem; margin: 0 auto;">
-    <h2 class="text-4xl lg:text-5xl font-bold" style="font-family: var(--font-heading); line-height: var(--leading-snug); letter-spacing: var(--tracking-tight); text-align: center; margin-bottom: var(--space-12); color: var(--color-text);">
+    <span class="eyebrow-label">Portfólio</span>
+    <h2 class="text-4xl lg:text-5xl font-bold" style="font-family: var(--font-heading); line-height: var(--leading-snug); letter-spacing: var(--tracking-tight); text-align: center; margin-bottom: var(--space-12); margin-top: 0; color: var(--color-text);">
       Nossos projetos
     </h2>
 
@@ -52,7 +53,7 @@ const projects = rawProjects.map((p) => ({
 
   @media (max-width: 639px) {
     section {
-      padding: var(--space-16) var(--space-4) !important;
+      padding: var(--space-16) var(--space-6) !important;
     }
   }
 

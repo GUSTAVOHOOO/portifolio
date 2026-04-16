@@ -17,8 +17,9 @@ const processSteps = [
 ];
 ---
 
-<section id="servicos">
+<section id="servicos" class="section-with-eyebrow">
   <div style="max-width: 80rem; margin: 0 auto;">
+    <span class="eyebrow-label">Serviços</span>
     <h2 class="section-heading">O que fazemos</h2>
 
     <ServicesAnimations
@@ -26,12 +27,17 @@ const processSteps = [
       processSteps={processSteps}
       client:visible
     />
+
+    <div class="services-cta">
+      <p class="services-cta-text">Pronto para começar?</p>
+      <a href="#contato" class="btn-primary">Solicitar orçamento</a>
+    </div>
   </div>
 </section>
 
 <style>
   section#servicos {
-    padding: var(--space-16) var(--space-4);
+    padding: var(--space-16) var(--space-6);
   }
 
   @media (min-width: 1024px) {
@@ -101,5 +107,41 @@ const processSteps = [
       height: 1px;
       border-top: 1px dashed var(--color-border);
     }
+  }
+
+  .services-cta {
+    text-align: center;
+    margin-top: var(--space-16);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
+  .services-cta-text {
+    font-family: var(--font-body);
+    font-size: var(--text-lg);
+    color: var(--color-text-muted);
+    margin: 0;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-3) var(--space-8);
+    background: var(--color-accent);
+    color: #fff;
+    font-family: var(--font-heading);
+    font-size: var(--text-base);
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: var(--radius-full);
+    transition: all var(--transition-base);
+  }
+
+  .btn-primary:hover {
+    background: var(--color-accent-hover);
+    box-shadow: var(--shadow-glow);
   }
 </style>

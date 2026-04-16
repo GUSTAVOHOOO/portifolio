@@ -54,13 +54,13 @@ export default function PortfolioIsland({ projects }: Props) {
                 border: '1px solid',
                 borderColor: isActive ? 'var(--color-accent)' : 'var(--color-border)',
                 borderRadius: 'var(--radius-full)',
-                padding: '6px 20px',
+                padding: '8px 20px',
                 cursor: 'pointer',
                 fontFamily: 'var(--font-heading)',
                 fontWeight: 600,
                 fontSize: 'var(--text-sm)',
                 transition: 'all 180ms ease',
-                minHeight: '36px',
+                minHeight: '44px',
               }}
             >
               {formatLabel(cat)}
