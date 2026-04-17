@@ -1,5 +1,5 @@
 ---
-import MagicBento from "./MagicBento.tsx";
+import MagicBento from "../ui/MagicBento.tsx";
 
 const bentoCards = [
   {
@@ -7,6 +7,7 @@ const bentoCards = [
     label: "Menu",
     title: "Cardápio Digital",
     description: "Menu interativo para restaurantes, bares e delivery.",
+    icon: "M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2M7 2v20M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7",
   },
   {
     color: "var(--color-surface)",
@@ -14,12 +15,14 @@ const bentoCards = [
     title: "Site Institucional",
     description:
       "Presença digital profissional para empresas e empreendedores.",
+    icon: "M20 3H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1zM8 21h8M12 17v4",
   },
   {
     color: "var(--color-surface)",
     label: "Conversão",
     title: "Landing Page",
     description: "Página de alta performance para campanhas e lançamentos.",
+    icon: "M13 2L3 14h9l-1 8 10-12h-9l1-8z",
   },
   {
     color: "var(--color-surface)",
@@ -27,23 +30,26 @@ const bentoCards = [
     title: "Loja Online",
     description:
       "E-commerce completo com catálogo, carrinho e checkout integrado.",
+    icon: "M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0",
   },
   {
     color: "var(--color-surface)",
     label: "SEO",
     title: "Performance & SEO",
     description: "Apareça no Google e carregue em menos de 1 segundo.",
+    icon: "M23 6l-9.5 9.5-5-5L1 18M17 6h6v6",
   },
   {
     color: "var(--color-surface)",
     label: "Suporte",
     title: "Suporte Contínuo",
     description: "Atendimento dedicado e manutenção pós-entrega.",
+    icon: "M3 18v-6a9 9 0 0 1 18 0v6M3 18a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3vM21 18a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3v5z",
   },
 ];
 ---
 
-<section id="servicos" class="services-section">
+<section id="servicos" class="services-section" style="background: var(--color-surface);">
   <div class="services-inner">
     <span class="eyebrow-label">O que criamos</span>
     <h2 class="section-heading">Feito <em class="accent-italic">sob medida</em><br />para o seu negócio</h2>
@@ -139,37 +145,125 @@ const bentoCards = [
 </style>
 
 <style is:global>
-  /* MagicBento overrides to match site theme */
+  /* MagicBento overrides — ServicesSection */
   .card-grid {
     max-width: 72rem;
   }
 
+  /* --- Base (cards pequenos) --- */
   .magic-bento-card {
     border-color: var(--color-border);
     font-family: var(--font-body);
+    padding: 1.1em;
+    justify-content: flex-start;
+    gap: 0.75em;
   }
 
+  /* Label — pill badge */
   .magic-bento-card__label {
     font-family: var(--font-heading);
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 700;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--color-accent);
-    opacity: 0.85;
+    background: rgba(var(--color-accent-rgb), 0.12);
+    border: 1px solid rgba(var(--color-accent-rgb), 0.25);
+    padding: 3px 10px;
+    border-radius: 999px;
+    display: inline-block;
+    line-height: 1.6;
   }
 
+  /* Icon — pequeno nos cards menores */
+  .magic-bento-card__icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: rgba(var(--color-accent-rgb), 0.10);
+    border: 1px solid rgba(var(--color-accent-rgb), 0.20);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-accent);
+    box-shadow: 0 0 14px rgba(var(--color-accent-rgb), 0.15);
+    flex-shrink: 0;
+  }
+
+  .magic-bento-card__icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* Content — gap compacto nos pequenos */
+  .magic-bento-card__content {
+    gap: 0.4em;
+  }
+
+  /* Remove line-clamp — texto nunca cortado */
+  .magic-bento-card--text-autohide .magic-bento-card__title,
+  .magic-bento-card--text-autohide .magic-bento-card__description {
+    display: block;
+    -webkit-line-clamp: unset;
+    line-clamp: unset;
+    overflow: visible;
+  }
+
+  /* Título pequeno — 18px */
   .magic-bento-card__title {
     font-family: var(--font-heading);
     font-weight: 700;
-    font-size: 18px;
+    font-size: var(--text-lg);
+    line-height: 1.2;
     color: var(--color-text);
-    margin: 0 0 0.35em;
+    margin: 0;
   }
 
+  /* Descrição pequena — 13px */
   .magic-bento-card__description {
-    font-size: 13px;
-    line-height: 1.5;
+    font-size: var(--text-sm);
+    line-height: 1.55;
     color: var(--color-text-muted);
+  }
+
+  /* --- Cards grandes (nth-child 3 e 4 no DOM) --- */
+  .magic-bento-card:nth-child(3),
+  .magic-bento-card:nth-child(4) {
+    padding: 1.5em;
+    gap: 1.1em;
+  }
+
+  .magic-bento-card:nth-child(3) .magic-bento-card__label,
+  .magic-bento-card:nth-child(4) .magic-bento-card__label {
+    font-size: 11px;
+    padding: 4px 12px;
+  }
+
+  .magic-bento-card:nth-child(3) .magic-bento-card__icon,
+  .magic-bento-card:nth-child(4) .magic-bento-card__icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 16px;
+  }
+
+  .magic-bento-card:nth-child(3) .magic-bento-card__icon svg,
+  .magic-bento-card:nth-child(4) .magic-bento-card__icon svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .magic-bento-card:nth-child(3) .magic-bento-card__content,
+  .magic-bento-card:nth-child(4) .magic-bento-card__content {
+    gap: 0.65em;
+  }
+
+  .magic-bento-card:nth-child(3) .magic-bento-card__title,
+  .magic-bento-card:nth-child(4) .magic-bento-card__title {
+    font-size: var(--text-3xl);
+  }
+
+  .magic-bento-card:nth-child(3) .magic-bento-card__description,
+  .magic-bento-card:nth-child(4) .magic-bento-card__description {
+    font-size: var(--text-base);
   }
 </style>

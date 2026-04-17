@@ -2,33 +2,15 @@ import { useState } from 'react';
 
 type Status = 'idle' | 'loading' | 'success' | 'error';
 
-const fieldStyle: React.CSSProperties = {
-  background: 'var(--color-surface)',
-  border: '1px solid var(--color-border)',
-  borderRadius: 'var(--radius-md)',
-  padding: 'var(--space-4)',
-  fontFamily: 'var(--font-body)',
-  fontSize: 'var(--text-base)',
-  color: 'var(--color-text)',
-  width: '100%',
-  boxSizing: 'border-box',
-};
-
-const labelStyle: React.CSSProperties = {
-  fontFamily: 'var(--font-body)',
-  fontSize: 'var(--text-sm)',
-  color: 'var(--color-text-muted)',
-  display: 'block',
-  marginBottom: 'var(--space-2)',
-};
+import './ContactForm.css';
 
 export default function ContactForm() {
   const [status, setStatus] = useState<Status>('idle');
 
   if (status === 'success') {
     return (
-      <div style={{ color: 'var(--color-text)', fontFamily: 'var(--font-body)', padding: '24px', textAlign: 'center' }}>
-        <p style={{ fontSize: 'var(--text-base)', marginBottom: '8px' }}>
+      <div className="contact-success">
+        <p className="contact-success-title">
           Mensagem enviada! Entraremos em contato em breve.
         </p>
       </div>
@@ -56,10 +38,10 @@ export default function ContactForm() {
   return (
     <form onSubmit={handleSubmit}>
       <input type="hidden" name="access_key" value={import.meta.env.PUBLIC_WEB3FORMS_KEY} />
-      <input type="checkbox" name="botcheck" style={{ display: 'none' }} tabIndex={-1} autoComplete="off" />
+      <input type="checkbox" name="botcheck" className="contact-hidden" tabIndex={-1} autoComplete="off" title="botcheck" aria-hidden="true" />
 
-      <div style={{ marginBottom: 'var(--space-4)' }}>
-        <label htmlFor="name" style={labelStyle}>Nome</label>
+      <div className="contact-group">
+        <label htmlFor="name" className="contact-label">Nome</label>
         <input
           id="name"
           type="text"
@@ -68,12 +50,11 @@ export default function ContactForm() {
           required
           aria-required="true"
           className="contact-input"
-          style={fieldStyle}
         />
       </div>
 
-      <div style={{ marginBottom: 'var(--space-4)' }}>
-        <label htmlFor="email" style={labelStyle}>Email</label>
+      <div className="contact-group">
+        <label htmlFor="email" className="contact-label">Email</label>
         <input
           id="email"
           type="email"
@@ -82,19 +63,17 @@ export default function ContactForm() {
           required
           aria-required="true"
           className="contact-input"
-          style={fieldStyle}
         />
       </div>
 
-      <div style={{ marginBottom: 'var(--space-4)' }}>
-        <label htmlFor="subject" style={labelStyle}>Assunto</label>
+      <div className="contact-group">
+        <label htmlFor="subject" className="contact-label">Assunto</label>
         <select
           id="subject"
           name="subject"
           required
           aria-required="true"
           className="contact-input"
-          style={fieldStyle}
           defaultValue=""
         >
           <option value="" disabled>Selecione o tipo</option>
@@ -106,43 +85,28 @@ export default function ContactForm() {
         </select>
       </div>
 
-      <div style={{ marginBottom: 'var(--space-4)' }}>
-        <label htmlFor="message" style={labelStyle}>Mensagem</label>
+      <div className="contact-group">
+        <label htmlFor="message" className="contact-label">Mensagem</label>
         <textarea
           id="message"
           name="message"
           rows={4}
           placeholder="Conte um pouco sobre o seu projeto..."
           required
-          className="contact-input"
-          style={{ ...fieldStyle, resize: 'vertical' }}
+          className="contact-input contact-input--textarea"
         />
       </div>
 
       <button
         type="submit"
         disabled={status === 'loading'}
-        style={{
-          background: 'var(--color-accent)',
-          borderRadius: 'var(--radius-full)',
-          minHeight: '44px',
-          padding: '0 var(--space-8)',
-          fontFamily: 'var(--font-heading)',
-          fontWeight: 700,
-          fontSize: 'var(--text-base)',
-          color: 'var(--color-text)',
-          width: '100%',
-          cursor: status === 'loading' ? 'not-allowed' : 'pointer',
-          border: 'none',
-          transition: 'all 200ms ease',
-          opacity: status === 'loading' ? 0.7 : 1,
-        }}
+        className={`contact-submit ${status === 'loading' ? 'contact-submit--loading' : ''}`}
       >
         {status === 'loading' ? 'Enviando...' : 'Enviar mensagem'}
       </button>
 
       {status === 'error' && (
-        <p role="alert" style={{ color: 'var(--color-error, #f87171)', marginTop: 'var(--space-3)', fontSize: 'var(--text-sm)' }}>
+        <p role="alert" className="contact-error">
           Ocorreu um erro ao enviar. Tente novamente ou entre em contato pelo WhatsApp.
         </p>
       )}

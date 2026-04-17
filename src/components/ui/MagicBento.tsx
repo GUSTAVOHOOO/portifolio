@@ -12,6 +12,7 @@ interface CardData {
   title: string;
   description: string;
   label: string;
+  icon?: string;
 }
 
 interface ParticleCardProps {
@@ -358,6 +359,13 @@ const MagicBento = ({
                   <div className="magic-bento-card__label">{card.label}</div>
                 </div>
                 <div className="magic-bento-card__content">
+                  {card.icon && (
+                    <div className="magic-bento-card__icon">
+                      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                        <path d={card.icon} />
+                      </svg>
+                    </div>
+                  )}
                   <h2 className="magic-bento-card__title">{card.title}</h2>
                   <p className="magic-bento-card__description">{card.description}</p>
                 </div>
@@ -371,6 +379,13 @@ const MagicBento = ({
                 <div className="magic-bento-card__label">{card.label}</div>
               </div>
               <div className="magic-bento-card__content">
+                {card.icon && (
+                  <div className="magic-bento-card__icon">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <path d={card.icon} />
+                    </svg>
+                  </div>
+                )}
                 <h2 className="magic-bento-card__title">{card.title}</h2>
                 <p className="magic-bento-card__description">{card.description}</p>
               </div>

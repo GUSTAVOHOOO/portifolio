@@ -6,11 +6,11 @@
 
 :root {
   /* ─── Color: Backgrounds ─────────────────────────────────── */
-  --color-bg:              #0A0A0F;   /* Page background — near-black (D-01) */
-  --color-bg-rgb:          10, 10, 15;
-  --color-surface:         #13131A;   /* Card/panel surface */
-  --color-surface-rgb:     19, 19, 26;
-  --color-surface-raised:  #1A1A24;   /* Elevated surface (modal, tooltip) */
+  --color-bg:              #000000;   /* Page background — pure black */
+  --color-bg-rgb:          0, 0, 0;
+  --color-surface:         #000000;   /* Card/panel surface — pure black */
+  --color-surface-rgb:     0, 0, 0;
+  --color-surface-raised:  #0A0A0F;   /* Slightly elevated surface for visibility */
 
   /* ─── Color: Accent — Indigo (D-02) ─────────────────────── */
   --color-accent:          #6366F1;   /* Primary interactive / CTA / logo GM letters */

@@ -1,0 +1,27 @@
+---
+import { LogoCloud } from '@/components/ui/logo-cloud';
+
+const technologies = [
+  { src: 'https://cdn.simpleicons.org/react/ffffff', alt: 'React' },
+  { src: 'https://cdn.simpleicons.org/nextdotjs/ffffff', alt: 'Next.js' },
+  { src: 'https://cdn.simpleicons.org/typescript/ffffff', alt: 'TypeScript' },
+  { src: 'https://cdn.simpleicons.org/tailwindcss/ffffff', alt: 'Tailwind CSS' },
+  { src: 'https://cdn.simpleicons.org/astro/ffffff', alt: 'Astro' },
+  { src: 'https://cdn.simpleicons.org/nodedotjs/ffffff', alt: 'Node.js' },
+  { src: 'https://cdn.simpleicons.org/figma/ffffff', alt: 'Figma' },
+  { src: 'https://cdn.simpleicons.org/wordpress/ffffff', alt: 'WordPress' },
+  { src: 'https://cdn.simpleicons.org/javascript/ffffff', alt: 'JavaScript' },
+  { src: 'https://cdn.simpleicons.org/framer/ffffff', alt: 'Framer' },
+  { src: 'https://cdn.simpleicons.org/vercel/ffffff', alt: 'Vercel' },
+  { src: 'https://cdn.simpleicons.org/github/ffffff', alt: 'GitHub' },
+];
+---
+
+<section class="py-16 px-6">
+  <div class="max-w-5xl mx-auto">
+    <p class="text-center text-sm font-medium tracking-widest uppercase text-text-muted mb-8">
+      Tecnologias que dominamos
+    </p>
+    <LogoCloud client:load logos={technologies} />
+  </div>
+</section>

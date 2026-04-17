@@ -1,0 +1,43 @@
+---
+interface Props {
+  variant: 'bg-to-surface' | 'surface-to-bg';
+}
+const { variant } = Astro.props;
+---
+
+{variant === 'bg-to-surface' ? (
+  <div class="divider-wrap divider-from-bg" aria-hidden="true">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path class="fill-surface" d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" />
+    </svg>
+  </div>
+) : (
+  <div class="divider-wrap divider-from-surface" aria-hidden="true">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path class="fill-bg" d="M0,40 C360,0 1080,80 1440,40 L1440,80 L0,80 Z" />
+    </svg>
+  </div>
+)}
+
+<style>
+  .divider-wrap {
+    display: none; /* Hidden to make transitions impossible to notice */
+    width: 100%;
+    line-height: 0;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+  }
+
+  .divider-from-bg   { background: #000000; }
+  .divider-from-surface { background: #000000; }
+
+  .divider-wrap svg {
+    display: none;
+    width: 100%;
+    height: 0;
+  }
+
+  .fill-surface { fill: var(--color-surface); }
+  .fill-bg      { fill: var(--color-bg); }
+</style>
