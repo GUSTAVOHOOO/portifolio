@@ -1,0 +1,76 @@
+/* Contact Form Base Styles */
+
+.contact-success {
+  color: var(--color-text);
+  font-family: var(--font-body);
+  padding: 24px;
+  text-align: center;
+}
+
+.contact-success-title {
+  font-size: var(--text-base);
+  margin-bottom: 8px;
+}
+
+.contact-hidden {
+  display: none;
+}
+
+.contact-group {
+  margin-bottom: var(--space-4);
+}
+
+.contact-label {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  display: block;
+  margin-bottom: var(--space-2);
+}
+
+.contact-input {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--color-text);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.contact-input--textarea {
+  resize: vertical;
+}
+
+.contact-submit {
+  background: var(--color-accent);
+  border-radius: var(--radius-full);
+  min-height: 44px;
+  padding: 0 var(--space-8);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: var(--text-base);
+  color: var(--color-text);
+  width: 100%;
+  border: none;
+  transition: background-color 200ms ease, opacity 200ms ease;
+  cursor: pointer;
+}
+
+.contact-submit:hover {
+  background: var(--color-accent-hover);
+}
+
+.contact-submit:disabled,
+.contact-submit--loading {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.contact-error {
+  color: var(--color-error, #f87171);
+  margin-top: var(--space-3);
+  font-size: var(--text-sm);
+}
