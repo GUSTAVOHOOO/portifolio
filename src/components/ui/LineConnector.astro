@@ -1,0 +1,82 @@
+---
+interface Props {
+  d: string;
+  triggerId: string;
+  start?: string;
+  end?: string;
+  height?: string;
+}
+
+const { d, triggerId, start = "top 80%", end = "bottom 50%", height = "120px" } = Astro.props;
+---
+<div class="line-connector-wrapper" style={`height: ${height}; width: 100%; position: relative; overflow: visible; z-index: 10; display: flex; justify-content: center; pointer-events: none;`}>
+  <svg style="width: 200px; height: 100%; overflow: visible;" viewBox="0 0 100 100" preserveAspectRatio="none">
+    <!-- Background Guide Line -->
+    <path
+      d={d}
+      fill="none"
+      stroke="rgba(255, 255, 255, 0.05)"
+      stroke-width="4"
+      stroke-linecap="round"
+    />
+    <!-- Foreground Animated Line -->
+    <path
+      class="animated-line-path"
+      d={d}
+      fill="none"
+      stroke="var(--color-accent)"
+      stroke-width="4"
+      stroke-linecap="round"
+      data-trigger={triggerId}
+      data-start={start}
+      data-end={end}
+    />
+  </svg>
+</div>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  function initLines() {
+    const paths = document.querySelectorAll<SVGPathElement>('.animated-line-path');
+    paths.forEach((path) => {
+      const triggerId = path.dataset.trigger;
+      const start = path.dataset.start || "top 80%";
+      const end = path.dataset.end || "bottom 50%";
+      const trigger = document.getElementById(triggerId || "");
+
+      if (!trigger) {
+        console.warn(`LineConnector: Trigger element #${triggerId} not found`);
+        return;
+      }
+
+      const length = path.getTotalLength();
+      
+      // Initialize path to be hidden
+      gsap.set(path, {
+        strokeDasharray: length,
+        strokeDashoffset: length
+      });
+
+      // Animate strokeDashoffset on scroll
+      gsap.to(path, {
+        strokeDashoffset: 0,
+        ease: "none",
+        scrollTrigger: {
+          trigger: trigger,
+          start: start,
+          end: end,
+          scrub: true
+        }
+      });
+    });
+  }
+
+  // Run on page load
+  document.addEventListener('DOMContentLoaded', initLines);
+  // Run on Astro page transition
+  document.addEventListener('astro:page-load', initLines);
+</script>
