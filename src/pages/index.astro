@@ -6,17 +6,22 @@ import ServicesSection from '../components/sections/ServicesSection.astro';
 import TechnologiesSection from '../components/sections/TechnologiesSection.astro';
 import AboutSection from '../components/sections/AboutSection.astro';
 import TestimonialsSection from '../components/sections/TestimonialsSection.astro';
+import PortfolioSection from '../components/sections/PortfolioSection.astro';
 import ContactSection from '../components/sections/ContactSection.astro';
 import FooterSection from '../components/layout/FooterSection.astro';
+import LineConnector from '../components/ui/LineConnector.astro';
 ---
 <BaseLayout title="GMStudio — Presença digital que converte">
   <Nav />
   <main>
     <HeroSection />
+    <LineConnector d="M 50 0 L 50 100" triggerId="hero" start="bottom 80%" end="bottom 20%" height="100px" />
     <ServicesSection />
+    <LineConnector d="M 50 0 Q 30 50 50 100" triggerId="servicos" start="bottom 90%" end="bottom 30%" height="120px" />
     <TechnologiesSection />
     <AboutSection />
     <TestimonialsSection />
+    <PortfolioSection />
     <ContactSection />
   </main>
   <FooterSection />
